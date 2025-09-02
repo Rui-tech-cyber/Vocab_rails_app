@@ -24,5 +24,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true
-  
+
+  has_many :word_books, dependent: :destroy
+  after_create :create_default_word_book
+
+  private
+
+  def create_default_word_book
+    word_books.create!(title: 'My WordBook')
+  end
 end
