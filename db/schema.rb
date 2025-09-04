@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_04_082350) do
+ActiveRecord::Schema[7.2].define(version: 2025_09_04_091839) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "exam_answers", force: :cascade do |t|
+    t.bigint "exam_id", null: false
+    t.bigint "word_id", null: false
+    t.string "user_answer"
+    t.boolean "correct"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exam_id"], name: "index_exam_answers_on_exam_id"
+    t.index ["word_id"], name: "index_exam_answers_on_word_id"
+  end
 
   create_table "exams", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -54,6 +65,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_04_082350) do
     t.index ["word_book_id"], name: "index_words_on_word_book_id"
   end
 
+  add_foreign_key "exam_answers", "exams"
+  add_foreign_key "exam_answers", "words"
   add_foreign_key "exams", "users"
   add_foreign_key "exams", "word_books"
   add_foreign_key "word_books", "users"
