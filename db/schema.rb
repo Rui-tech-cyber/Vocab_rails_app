@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_04_100438) do
+ActiveRecord::Schema[7.2].define(version: 2025_09_04_120838) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,7 +21,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_04_100438) do
     t.boolean "correct"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["exam_id"], name: "index_exam_answers_on_exam_id"
+    t.index ["user_id"], name: "index_exam_answers_on_user_id"
     t.index ["word_id"], name: "index_exam_answers_on_word_id"
   end
 
@@ -67,6 +69,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_04_100438) do
   end
 
   add_foreign_key "exam_answers", "exams"
+  add_foreign_key "exam_answers", "users"
   add_foreign_key "exam_answers", "words"
   add_foreign_key "exams", "users"
   add_foreign_key "exams", "word_books"
