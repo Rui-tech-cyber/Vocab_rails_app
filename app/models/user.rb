@@ -27,6 +27,7 @@ class User < ApplicationRecord
 
   has_many :word_books, dependent: :destroy
   has_many :exams, dependent: :destroy
+  has_many :exam_answers, dependent: :destroy
 
   after_create :create_default_word_book
 
