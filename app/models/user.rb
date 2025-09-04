@@ -26,6 +26,8 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   has_many :word_books, dependent: :destroy
+  has_many :exams, dependent: :destroy
+  
   after_create :create_default_word_book
 
   private
@@ -33,4 +35,6 @@ class User < ApplicationRecord
   def create_default_word_book
     word_books.create!(title: 'My WordBook')
   end
+
+
 end

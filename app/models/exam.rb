@@ -22,4 +22,5 @@
 class Exam < ApplicationRecord
   belongs_to :user
   belongs_to :word_book
+  has_many :exam_questions, dependent: :destroy
 end
