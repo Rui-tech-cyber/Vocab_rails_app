@@ -27,14 +27,18 @@ class User < ApplicationRecord
 
   has_many :word_books, dependent: :destroy
   has_many :exams, dependent: :destroy
-  
+
   after_create :create_default_word_book
+
+  def build_exam_with_wordbook(title:)
+    wb = word_books.first || word_books.create!(title: "My Wordbook")
+    exams.build(title: title, word_book: wb)
+  end
 
   private
 
   def create_default_word_book
     word_books.create!(title: 'My WordBook')
   end
-
 
 end
