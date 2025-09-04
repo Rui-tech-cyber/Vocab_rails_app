@@ -18,6 +18,8 @@
 #
 class WordBook < ApplicationRecord
   belongs_to :user
+
   has_many :words, dependent: :destroy
   has_one :exam, dependent: :destroy
+  
 end
