@@ -19,4 +19,5 @@
 #
 class Word < ApplicationRecord
   belongs_to :word_book
+  has_many :exam_questions, dependent: :destroy
 end
