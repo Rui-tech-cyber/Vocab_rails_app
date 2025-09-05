@@ -1,10 +1,12 @@
-Rails.application.routes.draw do  
+Rails.application.routes.draw do 
+  devise_for :users
+
   get "words/search"
   get "home/index"
   get "search_words", to: "words#search", as: :search_words
-  devise_for :users
 
   root "home#index"
+  
   resources :word_books
   resources :words
   resources :exams
