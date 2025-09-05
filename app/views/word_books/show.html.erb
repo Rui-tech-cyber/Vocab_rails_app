@@ -1,2 +1,16 @@
-<h1>WordBooks#show</h1>
-<p>Find me in app/views/word_books/show.html.erb</p>
+<h1><%= @wordbook.title %></h1>
+
+<%= link_to "単語を追加", new_wordbook_word_path(@wordbook), class: "btn btn-primary mb-3" %>
+
+<ul>
+  <% @words.each do |word| %>
+    <li>
+      <strong><%= word.en_word %></strong> : <%= word.ja_word %>
+      <%= link_to "編集", edit_wordbook_word_path(@wordbook, word), class: "btn btn-sm btn-warning" %>
+      <%= link_to "削除", wordbook_word_path(@wordbook, word), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %>
+    </li>
+  <% end %>
+</ul>
+
+<hr>
+<%= link_to "一覧に戻る", wordbooks_path, class: "btn btn-secondary mt-3" %>
