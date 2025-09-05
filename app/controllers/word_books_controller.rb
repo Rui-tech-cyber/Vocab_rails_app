@@ -1,36 +1,56 @@
 class WordBooksController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_wordbook, only: [:show, :edit, :update, :destroy]
 
   def index
-    @wordbooks = current_user.word_books.order(created_at: :desc)
+    @word_books = current_user.word_books.order(created_at: :desc)
   end
 
   def show
-    @wordbook = current_user.word_books.find_by(id: params[:id])
-    if @wordbook.nil?
-      redirect_to word_books_path, alert: "この単語帳にはアクセスできません"
-    else
-      @words = @wordbook.words.order(created_at: :desc)
-    end
+    @words = @word_book.words.order(created_at: :desc)
   end
 
   def new
-    @wordbook = current_user.word_books.new
+    @word_book = current_user.word_books.new
   end
 
   def create
-    @wordbook = current_user.word_books.new(wordbook_params)
-    if @wordbook.save
-      redirect_to wordbooks_path, notice: "単語帳を作成しました。"
+    @word_book = current_user.word_books.new(word_book_params)
+    if @word_book.save
+      redirect_to word_books_path, notice: "単語帳を作成しました。"
     else
       flash.now[:alert] = "作成に失敗しました。"
       render :new
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @word_book.update(word_book_params)
+      redirect_to @word_book, notice: "単語帳を更新しました。"
+    else
+      flash.now[:alert] = "更新に失敗しました。"
+      render :edit
+    end
+  end
+
+  def destroy
+    @word_book.destroy
+    redirect_to word_books_path, notice: "単語帳を削除しました。"
+  end
+
   private
 
-  def wordbook_params
-    params.require(:wordbook).permit(:title)
+  def set_wordbook
+    @word_book = current_user.word_books.find_by(id: params[:id])
+    unless @word_book
+      redirect_to word_books_path, alert: "この単語帳にはアクセスできません。"
+    end
+  end
+
+  def word_book_params
+    params.require(:word_book).permit(:title)
   end
 end
