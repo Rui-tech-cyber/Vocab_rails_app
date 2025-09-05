@@ -1,4 +1,8 @@
 Rails.application.routes.draw do 
+  get "word_books/index"
+  get "word_books/show"
+  get "word_books/new"
+  get "word_books/create"
   devise_for :users
 
   get "words/search"
