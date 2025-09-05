@@ -1,6 +1,6 @@
 <h1><%= @wordbook.title %></h1>
 
-<%= link_to "単語を追加", new_wordbook_word_path(@wordbook), class: "btn btn-primary mb-3" %>
+<%= link_to "単語を追加", new_word_book_word_path(@wordbook), class: "btn btn-primary mb-3" %>
 
 <ul>
   <% @words.each do |word| %>
@@ -13,4 +13,4 @@
 </ul>
 
 <hr>
-<%= link_to "一覧に戻る", wordbooks_path, class: "btn btn-secondary mt-3" %>
+<%= link_to "一覧に戻る", word_books_path, class: "btn btn-secondary mt-3" %>
