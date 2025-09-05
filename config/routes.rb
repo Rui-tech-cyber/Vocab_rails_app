@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   get "search_words", to: "words#search", as: :search_words
 
   resources :word_books
-  resources :words
+  resources :words do
+    collection do
+      get :search
+    end
+  end
   resources :exams
 
   root "home#index"
