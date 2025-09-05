@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   get "home/index"
   get "search_words", to: "words#search", as: :search_words
 
-  root "home#index"
-  
   resources :word_books
   resources :words
   resources :exams
+
+  root "home#index"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
