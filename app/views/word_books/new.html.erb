@@ -1,2 +1,11 @@
-<h1>WordBooks#new</h1>
-<p>Find me in app/views/word_books/new.html.erb</p>
+<h1>新しい単語帳作成</h1>
+<%= form_with model: @wordbook, local: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :title, "単語帳タイトル" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <%= f.submit "作成", class: "btn btn-primary" %>
+<% end %>
+
+<hr>
+<%= link_to "一覧に戻る", wordbooks_path, class: "btn btn-secondary mt-3" %>
