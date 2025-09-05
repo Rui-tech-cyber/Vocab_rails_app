@@ -6,8 +6,12 @@ class WordBooksController < ApplicationController
   end
 
   def show
-    @wordbook = current_user.word_books.find(params[:id])
-    @words = @wordbook.words.order(created_at: :desc)
+    @wordbook = current_user.word_books.find_by(id: params[:id])
+    if @wordbook.nil?
+      redirect_to word_books_path, alert: "この単語帳にはアクセスできません"
+    else
+      @words = @wordbook.words.order(created_at: :desc)
+    end
   end
 
   def new
