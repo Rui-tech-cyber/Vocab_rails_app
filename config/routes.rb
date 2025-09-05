@@ -1,4 +1,5 @@
 Rails.application.routes.draw do  
+  get "words/search"
   get "home/index"
   get "search_words", to: "words#search", as: :search_words
   devise_for :users
