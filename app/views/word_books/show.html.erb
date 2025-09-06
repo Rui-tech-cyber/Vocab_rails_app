@@ -15,7 +15,7 @@
 <hr>
 
 <h3>英単語を検索して追加</h3>
-<%= form_with url: search_word_book_words_path(@word_book), method: :get, local: true do |f| %>
+<%= form_with url: search_words_path, method: :get, local: true do |f| %>
   <div class="mb-3">
     <%= f.label :term, "検索する英単語" %>
     <%= f.text_field :term, class: "form-control" %>
