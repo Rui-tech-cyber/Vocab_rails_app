@@ -1,0 +1,16 @@
+<h1><%= @word_book.title %> - 単語編集</h1>
+
+<%= form_with model: [@word_book, @word], local: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :term, "英単語" %>
+    <%= f.text_field :term, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :meaning, "意味" %>
+    <%= f.text_field :meaning, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.submit "更新", class: "btn btn-primary" %>
+    <%= link_to "キャンセル", word_book_path(@word_book), class: "btn btn-secondary" %>
+  </div>
+<% end %>

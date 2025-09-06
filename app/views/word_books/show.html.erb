@@ -1,13 +1,12 @@
 <h1><%= @word_book.title %></h1>
 
-<%= link_to "単語を追加", new_word_book_word_path(@word_book), class: "btn btn-primary mb-3" %>
-
+<h3>登録済み単語一覧</h3>
 <ul>
   <% @words.each do |word| %>
     <li>
       <strong><%= word.term %></strong> : <%= word.meaning %>
       <%= link_to "編集", edit_word_book_word_path(@word_book, word), class: "btn btn-sm btn-warning" %>
-      <%= button_to "この単語を削除", word_book_word_path(@word_book, word), method: :delete, class: "btn btn-sm btn-danger", onclick: "return confirm('#{word.term}を本当に削除しますか？');" %>
+      <%= button_to "削除", word_book_word_path(@word_book, word), method: :delete, class: "btn btn-sm btn-danger", onclick: "return confirm('#{word.term}を本当に削除しますか？');" %>
     </li>
   <% end %>
 </ul>
@@ -20,7 +19,7 @@
     <%= f.label :term, "検索する英単語" %>
     <%= f.text_field :term, class: "form-control" %>
   </div>
-    <%= f.submit "検索", class: "btn btn-primary" %>
+  <%= f.submit "検索", class: "btn btn-primary" %>
 <% end %>
 
 <% if @results.present? %>
@@ -30,7 +29,7 @@
       <li>
         <strong><%= res[:word] %></strong>: <%= res[:meaning] %>
         <small>(例： <%= res[:example] %>)</small>
-        <%= button_to "追加", word_book_words_path(@word_book, word: { term: res[:word], meaning: res[:meaning] }), method: :post, class: "btn btn-sm btn-success mt-1" %>
+        <%= button_to "追加", word_book_words_path(@word_book, word: { term: res[:word], meaning: res[:meaning] }), method: :post, class: "btn btn-sm btn-success mt-1", data: { turbo: false } %>
       </li>
     <% end %>
   </ul>
@@ -48,7 +47,7 @@
     <%= f.label :meaning, "意味" %>
     <%= f.text_field :meaning, class: "form-control" %>
   </div>
-    <%= f.submit "追加", class: "btn btn-secondary" %>
+  <%= f.submit "追加", class: "btn btn-secondary" %>
 <% end %>
 
 <hr>
