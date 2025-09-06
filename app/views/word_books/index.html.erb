@@ -1,11 +1,13 @@
 <h1>単語帳一覧</h1>
+
 <%= link_to "新しい単語帳を作成", new_word_book_path, class: "btn btn-primary mb-3" %>
 
 <ul>
-  <% @wordbooks.each do |wb| %>
+  <% @word_books.each do |wb| %>
     <li>
       <%= link_to wb.title, word_book_path(wb) %>
       (作成日: <%= wb.created_at.strftime("%Y-%m-%d") %>)
+      <%= button_to "削除", word_book_path(wb), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger ms-2" %>
     </li>
   <% end %>
 </ul>

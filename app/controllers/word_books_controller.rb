@@ -37,8 +37,12 @@ class WordBooksController < ApplicationController
   end
 
   def destroy
-    @word_book.destroy
-    redirect_to word_books_path, notice: "単語帳を削除しました。"
+    if @word_book
+      @word_book.destroy
+      redirect_to word_books_path, notice: "単語帳を削除しました。"
+    else
+      redirect_to word_books_path, alert: "削除できませんでした。"
+    end
   end
 
   private
