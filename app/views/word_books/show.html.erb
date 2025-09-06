@@ -5,9 +5,9 @@
 <ul>
   <% @words.each do |word| %>
     <li>
-      <strong><%= word.en_word %></strong> : <%= word.ja_word %>
+      <strong><%= word.term %></strong> : <%= word.meaning %>
       <%= link_to "編集", edit_word_book_word_path(@word_book, word), class: "btn btn-sm btn-warning" %>
-      <%= button_to "この単語を削除", word_book_word_path(@word_book, word), method: :delete, class: "btn btn-sm btn-danger", onclick: "return confirm('#{word.en_word}を本当に削除しますか？');" %>
+      <%= button_to "この単語を削除", word_book_word_path(@word_book, word), method: :delete, class: "btn btn-sm btn-danger", onclick: "return confirm('#{word.term}を本当に削除しますか？');" %>
     </li>
   <% end %>
 </ul>
