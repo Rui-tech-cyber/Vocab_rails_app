@@ -4,6 +4,7 @@ require "json"
 class WordsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_word_book, except: [:search]
+  before_action :set_word, only: [:edit, :update, :destroy]
 
   def new
     @word = @word_book.words.new
@@ -17,6 +18,23 @@ class WordsController < ApplicationController
       flash.now[:alert] = "単語の追加に失敗しました。"
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    if @word.update(word_params)
+      redirect_to word_book_path(@word_book), notice: "単語を更新しました。"
+    else
+      flash.now[:alert] = "単語の更新に失敗しました。"
+      render :edit
+    end
+  end
+
+  def destroy
+    @word.destroy
+    redirect_to word_book_path(@word_book), notice: "単語を削除しました。"
   end
 
   def search
@@ -58,7 +76,11 @@ class WordsController < ApplicationController
     end
   end
 
+  def set_word
+    @word = @word_book.words.find(params[:id])
+  end
+
   def word_params
-    params.require(:word).permit(:term, :meaning)
+    params.require(:word).permit(:term, :meaning, :example)
   end
 end
