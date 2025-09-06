@@ -2,15 +2,10 @@ require "net/http"
 require "json"
 
 class WordsController < ApplicationController
-
   before_action :authenticate_user!
-  before_action :set_word_book
+  before_action :set_word_book, except: [:search]
 
   def new
-    @word_book = current_user.word_books.find_by(id: params[:word_book_id])
-    unless @word_book
-      redirect_to word_books_path, alert: "この単語帳にはアクセスできません。"
-    end
     @word = @word_book.words.new
   end
 
@@ -61,10 +56,6 @@ class WordsController < ApplicationController
     unless @word_book
       redirect_to word_books_path, alert: "この単語帳にはアクセスできません。"
     end
-  end
-
-  def word_book_params
-    params.require(:word_book).permit(:title)
   end
 
   def word_params
