@@ -7,7 +7,7 @@
     <li>
       <%= link_to wb.title, word_book_path(wb) %>
       (作成日: <%= wb.created_at.strftime("%Y-%m-%d") %>)
-      <%= button_to "削除", word_book_path(wb), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger ms-2" %>
+      <%= button_to "この単語帳を削除", word_book_path(wb), method: :delete, class: "btn btn-danger mt-3", onclick: "return confirm('#{wb.title}を本当に削除しますか？');" %>
     </li>
   <% end %>
 </ul>

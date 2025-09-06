@@ -7,10 +7,12 @@
     <li>
       <strong><%= word.en_word %></strong> : <%= word.ja_word %>
       <%= link_to "編集", edit_word_book_word_path(@word_book, word), class: "btn btn-sm btn-warning" %>
-      <%= link_to "削除", word_book_word_path(@word_book, word), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %>
+      <%= button_to "この単語を削除", word_book_word_path(@word_book, word), method: :delete, class: "btn btn-sm btn-danger", onclick: "return confirm('#{word.en_word}を本当に削除しますか？');" %>
     </li>
   <% end %>
 </ul>
+
+<%= button_to "この単語帳を削除", word_book_path(@word_book), method: :delete, class: "btn btn-danger mt-3", onclick: "return confirm('#{@word_book.title}を本当に削除しますか？');"  %>
 
 <hr>
 <%= link_to "一覧に戻る", word_books_path, class: "btn btn-secondary mt-3" %>
