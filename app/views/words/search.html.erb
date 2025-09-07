@@ -23,6 +23,18 @@
         <% if entry[:example].present? %>
           <br>例文: <%= entry[:example] %>
         <% end %>
+
+        <% if user_signed_in? %>
+          <%= button_to "保存する",
+              word_book_words_path(
+                current_user.word_books.first,
+                word: { term: entry[:word], meaning: entry[:meaning] }
+              ),
+              method: :post,
+              class: "btn btn-sm btn-success mt-1" %>
+        <% else %>
+          <p class="text-muted">保存するにはログインしてください</p>
+        <% end %>
       </li>
     <% end %>
   </ul>
