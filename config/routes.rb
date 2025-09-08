@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "exam_answers/create"
   devise_for :users
 
   root "home#index"
