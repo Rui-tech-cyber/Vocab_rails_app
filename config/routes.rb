@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get "exams/new"
-  get "exams/show"
   devise_for :users
 
   root "home#index"
@@ -14,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :words, only: [:create]
 
-  resources :exams
+  resources :exams, only: [:new, :show, :create]
 
   get "up" => "rails/health#show", as: :rails_health_check
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
