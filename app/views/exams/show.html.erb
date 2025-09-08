@@ -1,2 +1,11 @@
-<h1>Exams#show</h1>
-<p>Find me in app/views/exams/show.html.erb</p>
+<h1><%= @exam.word_book.title %> のテスト</h1>
+
+<%= form_with url: exam_exam_answers_path(@exam), method: :post do %>
+  <% @questions.each do |q| %>
+    <div>
+      <p><%= q.question_text %></p>
+      <%= text_field_tag "answers[#{q.id}]" %>
+    </div>
+  <% end %>
+  <%= submit_tag "回答する" %>
+<% end %>

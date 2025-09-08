@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   resources :words, only: [:create]
 
-  resources :exams, only: [:new, :show, :create]
+  resources :exams, only: [:new, :show, :create] do
+    resources :exam_answers, only: [:create]
+  end
 
   get "up" => "rails/health#show", as: :rails_health_check
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
