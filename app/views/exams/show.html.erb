@@ -39,6 +39,8 @@ document.addEventListener("turbo:load", () => {
   const submitBtn = document.getElementById("submit-btn")
   const confirmSubmitBtn = document.getElementById("confirm-submit")
 
+  if (!form || !submitBtn || !confirmSubmitBtn) return
+
   submitBtn.addEventListener("click", () => {
     const inputs = document.querySelectorAll(".answer-input")
     inputs.forEach(input => {
@@ -50,7 +52,10 @@ document.addEventListener("turbo:load", () => {
       }
     })
 
-    const modal = new bootstrap.Modal(document.getElementById('confirmModal'))
+    const modalEl = document.getElementById('confirmModal')
+    if (!modalEl) return
+
+    const modal = new bootstrap.Modal(modalEl)
     modal.show()
   })
 

@@ -64,36 +64,37 @@
 
   <script>
   document.addEventListener("turbo:load", () => {
-    console.log("✅ turbo:load fired");
-    const modalEl = document.getElementById("saveWordModal");
-    if (!modalEl) return;
+    const modalEl = document.getElementById("saveWordModal")
+    if (!modalEl) return
 
-    const modal = new bootstrap.Modal(modalEl);
-    const form = document.getElementById("saveWordForm");
-    const termInput = document.getElementById("modal_word_term");
-    const meaningInput = document.getElementById("modal_word_meaning");
-    const wordBookInput = document.getElementById("modal_word_book_id");
-    const select = document.getElementById("word_book_select");
+    const modal = new bootstrap.Modal(modalEl)
+    const form = document.getElementById("saveWordForm")
+    const termInput = document.getElementById("modal_word_term")
+    const meaningInput = document.getElementById("modal_word_meaning")
+    const wordBookInput = document.getElementById("modal_word_book_id")
+    const select = document.getElementById("word_book_select")
 
-    let selectedData = { term: "", meaning: "" };
+    if (!form || !termInput || !meaningInput || !wordBookInput || !select) return
+
+    let selectedData = { term: "", meaning: "" }
 
     document.querySelectorAll(".open-modal-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        selectedData.term = btn.dataset.term || "";
-        selectedData.meaning = btn.dataset.meaning || "";
-        modal.show();
-      });
-    });
+        selectedData.term = btn.dataset.term || ""
+        selectedData.meaning = btn.dataset.meaning || ""
+        modal.show()
+      })
+    })
 
     select.addEventListener("change", (e) => {
-      wordBookInput.value = e.target.value;
-    });
+      wordBookInput.value = e.target.value
+    })
 
     form.addEventListener("submit", () => {
-      termInput.value = selectedData.term;
-      meaningInput.value = selectedData.meaning;
-      wordBookInput.value = select.value;
-    });
-  });  
+      termInput.value = selectedData.term
+      meaningInput.value = selectedData.meaning
+      wordBookInput.value = select.value
+    })
+  })
   </script>
 <% end %>
