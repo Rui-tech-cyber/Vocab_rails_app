@@ -2,10 +2,15 @@
 
 <%= form_with url: exam_exam_answers_path(@exam), method: :post do %>
   <% @questions.each do |q| %>
-    <div>
-      <p><%= q.question_text %></p>
-      <%= text_field_tag "answers[#{q.id}]" %>
+    <div class="mb-4 p-3 border rounded">
+      <p><strong>問題:</strong> <%= q.word.term %></p>
+      <%= label_tag "answers[#{q.id}]", "意味を入力してください" %>
+      <%= text_field_tag "answers[#{q.id}]", nil, class: "form-control" %>
     </div>
   <% end %>
-  <%= submit_tag "回答する" %>
+
+  <%= submit_tag "回答する", class: "btn btn-primary mt-3" %>
 <% end %>
+
+<hr>
+<%= link_to "トップページに戻る", root_path, class: "btn btn-secondary mb-3" %>
