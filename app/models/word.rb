@@ -23,4 +23,7 @@ class Word < ApplicationRecord
   has_many :exam_questions, dependent: :destroy
   has_many :exam_answers, dependent: :destroy
 
+  validates :term, presence: true
+  validates :meaning, presence: true
+
 end

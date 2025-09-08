@@ -1,6 +1,7 @@
 <h1>単語検索</h1>
 
 <%= form_with url: search_words_path, method: :get, local: true do %>
+  <%= hidden_field_tag :default_word_book_id, params[:default_word_book_id] %>
   <div class="mb-3">
     <%= label_tag :term, "検索ワード" %>
     <%= text_field_tag :term, params[:term], class: "form-control" %>
@@ -9,31 +10,23 @@
 <% end %>
 
 <% if flash.now[:alert].present? %>
-  <div class="alert alert-warning">
-    <%= flash.now[:alert] %>
-  </div>
+  <div class="alert alert-warning"><%= flash.now[:alert] %></div>
 <% end %>
 
 <% if @results.present? %>
   <h2>検索結果</h2>
   <ul>
     <% @results.each do |entry| %>
-      <li>
+      <li class="mb-2">
         <strong><%= entry[:word] %></strong>: <%= entry[:meaning] %>
         <% if entry[:example].present? %>
           <br>例文: <%= entry[:example] %>
         <% end %>
 
         <% if user_signed_in? %>
-          <%= button_to "保存する",
-              word_book_words_path(
-                current_user.word_books.first,
-                word: { term: entry[:word], meaning: entry[:meaning] }
-              ),
-              method: :post,
-              class: "btn btn-sm btn-success mt-1" %>
+          <button type="button" class="btn btn-sm btn-success mt-1 open-modal-btn" data-term="<%= entry[:word] %>" data-meaning="<%= entry[:meaning] %>">保存する</button>
         <% else %>
-          <p class="text-muted">保存するにはログインしてください</p>
+          <p class="text-muted">保存するにはログインしてください。</p>
         <% end %>
       </li>
     <% end %>
@@ -44,3 +37,63 @@
 
 <hr>
 <%= link_to "トップページに戻る", root_path, class: "btn btn-secondary mb-3" %>
+
+<% if user_signed_in? %>
+  <div class="modal fade" id="saveWordModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">単語を追加する単語帳を選択</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <%= form_with scope: :word, url: words_path, method: :post, local: true, id: "saveWordForm" do |f| %>
+            <%= f.hidden_field :term,    id: "modal_word_term" %>
+            <%= f.hidden_field :meaning, id: "modal_word_meaning" %>
+            <%= f.hidden_field :word_book_id, id: "modal_word_book_id" %>
+            <div class="mb-3">
+              <%= label_tag "word[word_book_id]", "単語帳" %>
+              <%= select_tag "word[word_book_id]", options_from_collection_for_select(current_user.word_books, :id, :title), id: "word_book_select", class: "form-select" %>
+            </div>
+            <%= submit_tag "保存する", class: "btn btn-success" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener("turbo:load", () => {
+    console.log("✅ turbo:load fired");
+    const modalEl = document.getElementById("saveWordModal");
+    if (!modalEl) return;
+
+    const modal = new bootstrap.Modal(modalEl);
+    const form = document.getElementById("saveWordForm");
+    const termInput = document.getElementById("modal_word_term");
+    const meaningInput = document.getElementById("modal_word_meaning");
+    const wordBookInput = document.getElementById("modal_word_book_id");
+    const select = document.getElementById("word_book_select");
+
+    let selectedData = { term: "", meaning: "" };
+
+    document.querySelectorAll(".open-modal-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        selectedData.term = btn.dataset.term || "";
+        selectedData.meaning = btn.dataset.meaning || "";
+        modal.show();
+      });
+    });
+
+    select.addEventListener("change", (e) => {
+      wordBookInput.value = e.target.value;
+    });
+
+    form.addEventListener("submit", () => {
+      termInput.value = selectedData.term;
+      meaningInput.value = selectedData.meaning;
+      wordBookInput.value = select.value;
+    });
+  });  
+  </script>
+<% end %>

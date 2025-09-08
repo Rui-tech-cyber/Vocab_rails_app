@@ -1,4 +1,4 @@
-Rails.application.routes.draw do 
+Rails.application.routes.draw do
   devise_for :users
 
   root "home#index"
@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :word_books do
     resources :words, except: [:index]
   end
+
+  resources :words, only: [:create]
 
   resources :exams
 

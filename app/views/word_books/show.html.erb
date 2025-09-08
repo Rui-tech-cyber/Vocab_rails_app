@@ -15,6 +15,7 @@
 
 <h3>英単語を検索して追加</h3>
 <%= form_with url: search_words_path, method: :get, local: true do |f| %>
+  <%= hidden_field_tag :default_word_book_id, @word_book.id %>
   <div class="mb-3">
     <%= f.label :term, "検索する英単語" %>
     <%= f.text_field :term, class: "form-control" %>
@@ -22,36 +23,24 @@
   <%= f.submit "検索", class: "btn btn-primary" %>
 <% end %>
 
-<% if @results.present? %>
-  <h4 class="mt-3">検索結果</h4>
-  <ul>
-    <% @results.each do |res| %>
-      <li>
-        <strong><%= res[:word] %></strong>: <%= res[:meaning] %>
-        <small>(例： <%= res[:example] %>)</small>
-        <%= button_to "追加", word_book_words_path(@word_book, word: { term: res[:word], meaning: res[:meaning] }), method: :post, class: "btn btn-sm btn-success mt-1", data: { turbo: false } %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-
 <hr>
 
 <h3>単語を手動で追加</h3>
-<%= form_with model: [@word_book, @word_book.words.new], local: true do |f| %>
+<%= form_with scope: :word, url: words_path, method: :post, local: true do |f| %>
+  <%= f.hidden_field :word_book_id, value: @word_book.id %>
   <div class="mb-3">
     <%= f.label :term, "英単語" %>
     <%= f.text_field :term, class: "form-control" %>
   </div>
   <div class="mb-3">
     <%= f.label :meaning, "意味" %>
-    <%= f.text_field :meaning, class: "form-control" %>
+    <%= f.text_area :meaning, class: "form-control" %>
   </div>
-  <%= f.submit "追加", class: "btn btn-secondary" %>
+  <%= f.submit "追加する", class: "btn btn-primary" %>
 <% end %>
 
 <hr>
 
-<%= button_to "この単語帳を削除", word_book_path(@word_book), method: :delete, class: "btn btn-danger mt-3", onclick: "return confirm('#{@word_book.title}を本当に削除しますか？');"  %>
+<%= button_to "この単語帳を削除", word_book_path(@word_book), method: :delete, class: "btn btn-danger mt-3", onclick: "return confirm('#{@word_book.title}を本当に削除しますか？');" %>
 
 <%= link_to "一覧に戻る", word_books_path, class: "btn btn-secondary mt-3" %>
