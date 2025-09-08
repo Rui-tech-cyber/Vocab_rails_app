@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "exams/new"
+  get "exams/show"
   devise_for :users
 
   root "home#index"
