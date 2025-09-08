@@ -1,16 +1,61 @@
 <h1><%= @exam.word_book.title %> のテスト</h1>
 
-<%= form_with url: exam_exam_answers_path(@exam), method: :post do %>
+<%= form_with url: exam_exam_answers_path(@exam), method: :post, id: "exam-form" do %>
   <% @questions.each do |q| %>
     <div class="mb-4 p-3 border rounded">
       <p><strong>問題:</strong> <%= q.word.term %></p>
       <%= label_tag "answers[#{q.id}]", "意味を入力してください" %>
-      <%= text_field_tag "answers[#{q.id}]", nil, class: "form-control" %>
+      <%= text_field_tag "answers[#{q.id}]", nil, class: "form-control answer-input", data: { question_id: q.id } %>
     </div>
   <% end %>
 
-  <%= submit_tag "回答する", class: "btn btn-primary mt-3" %>
+  <%= button_tag "回答する", type: "button", class: "btn btn-primary mt-3", id: "submit-btn" %>
 <% end %>
 
 <hr>
 <%= link_to "トップページに戻る", root_path, class: "btn btn-secondary mb-3" %>
+
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">回答を送信する</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        本当に回答を送信しますか？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+        <button type="button" class="btn btn-primary" id="confirm-submit">送信する</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("turbo:load", () => {
+  const form = document.getElementById("exam-form")
+  const submitBtn = document.getElementById("submit-btn")
+  const confirmSubmitBtn = document.getElementById("confirm-submit")
+
+  submitBtn.addEventListener("click", () => {
+    const inputs = document.querySelectorAll(".answer-input")
+    inputs.forEach(input => {
+      if (input.value.trim() === "") {
+        input.classList.add("is-invalid")
+        input.value = ""
+      } else {
+        input.classList.remove("is-invalid")
+      }
+    })
+
+    const modal = new bootstrap.Modal(document.getElementById('confirmModal'))
+    modal.show()
+  })
+
+  confirmSubmitBtn.addEventListener("click", () => {
+    form.submit()
+  })
+})
+</script>

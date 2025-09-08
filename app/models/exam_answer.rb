@@ -28,5 +28,4 @@ class ExamAnswer < ApplicationRecord
   belongs_to :word
   belongs_to :user
 
-  validates :user_answer, presence: true
 end
