@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "home/index"
 
   get "search_words", to: "words#search", as: :search_words
+  get "my_page", to: "users#my_page", as: :my_page
 
   resources :word_books do
     resources :words, except: [:index]
