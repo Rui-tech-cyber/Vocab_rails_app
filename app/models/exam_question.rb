@@ -23,5 +23,4 @@ class ExamQuestion < ApplicationRecord
   belongs_to :word
   belongs_to :exam
 
-  has_many :exam_answers, dependent: :destroy
 end
