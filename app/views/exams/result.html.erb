@@ -10,9 +10,9 @@
 <h3>回答一覧</h3>
 <% @answers.each do |answer| %>
   <div class="mb-3 p-3 border rounded <%= answer.correct ? 'bg-light' : 'bg-warning' %>">
-    <p><strong>問題:</strong> [<%= answer.word.meaning %>]に対応する英単語は？</p>
+    <p><strong>問題:</strong> <%= answer.word.term %>の意味は？</p>
     <p><strong>あなたの回答:</strong> <%= answer.user_answer %></p>
-    <p><strong>正解:</strong> <%= answer.word.term %></p>
+    <p><strong>正解:</strong> <%= answer.word.meaning %></p>
     <% if answer.correct %>
       <span class="badge bg-success">正解</span>
     <% else %>
