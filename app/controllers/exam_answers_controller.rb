@@ -13,13 +13,20 @@ class ExamAnswersController < ApplicationController
     answers.each do |question_id, answer_text|
       question = ExamQuestion.find(question_id)
 
+      correct = answer_text.to_s.strip.downcase == question.word.meaning.to_s.strip.downcase
+
       ExamAnswer.create!(
         exam: exam,
         word: question.word,
         user: current_user,
         user_answer: answer_text
+        correct: correct
       )
+
+      if !correct
+        question.word.update!(mistake: true)
     end
+  end
 
     redirect_to exam_path(exam), notice: "回答を送信しました。"
   end
