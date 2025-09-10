@@ -1,2 +1,32 @@
-<h1>Users#my_page</h1>
-<p>Find me in app/views/users/my_page.html.erb</p>
+<h1><%= @user.name %>さんのマイページ</h1>
+
+<h2>最後にテストした単語帳</h2>
+
+<% if @exams.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>単語帳</th>
+        <th>モード</th>
+        <th>正解数</th>
+        <th>不正解数</th>
+        <th>結果を見る</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @exams.each do |exam| %>
+        <tr>
+          <td><%= exam.word_book.title %></td>
+          <td><%= exam.display_mode %></td>
+          <td><%= exam.exam_answers.select(&:correct).count %></td>
+          <td><%= exam.exam_answers.size - exam.exam_answers.select(&:correct).count %></td>
+          <td><%= link_to "結果を見る", result_exam_path(exam), class: "btn btn-sm btn-primary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>まだ学習履歴はありません。</p>
+<% end %>
+
+<%= link_to "トップページに戻る", root_path, class: "btn btn-secondary mt-3" %>
