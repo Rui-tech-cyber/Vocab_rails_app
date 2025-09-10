@@ -1,0 +1,32 @@
+@import "theme";
+
+$main-purple: #6f42c1;
+
+.bg-main-purple {
+  background-color: $main-purple !important;
+}
+
+.text-main-purple {
+  color: $main-purple !important;
+}
+
+.btn-main-purple {
+  background-color: $main-purple;
+  color: #fff;
+  border: none;
+
+  &:hover {
+    background-color: darken($main-purple, 10%);
+    color: #fff;
+  }
+}
+
+.btn-outline-main-purple {
+  border: 1px solid $main-purple;
+  color: $main-purple;
+
+  &:hover {
+    background-color: $main-purple;
+    color: #fff;
+  }
+}
