@@ -4,6 +4,7 @@ class ExamAnswersController < ApplicationController
   def create
     exam = Exam.find(params[:exam_id])
     answers = params[:answers] || {}
+    mode = params[:mode]
 
     if answers.empty?
       redirect_to exam_path(exam), alert: "回答が入力されていません。"
@@ -13,7 +14,12 @@ class ExamAnswersController < ApplicationController
     answers.each do |question_id, answer_text|
       question = ExamQuestion.find(question_id)
 
-      correct = answer_text.to_s.strip.downcase == question.word.meaning.to_s.strip.downcase
+      correct =
+        if mode == "jp_to_en" || exam.jp_to_en?
+          answer_text.to_s.strip.downcase == question.word.term.to_s.strip.downcase
+        else
+          answer_text.to_s.strip.downcase == question.word.meaning.to_s.strip.downcase
+        end
 
       exam_answer = ExamAnswer.find_or_initialize_by(
         exam: exam,

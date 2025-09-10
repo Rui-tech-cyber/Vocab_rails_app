@@ -24,6 +24,8 @@
         </div>
       <% end %>
 
+      <%= hidden_field_tag :mode, "en_to_jp" %>
+
       <%= button_tag "回答する", type: "button", class: "btn btn-primary mt-3 submit-btn", data: { form_id: "exam-form-ja-en" } %>
     <% end %>
   </div>
@@ -37,6 +39,8 @@
           <%= text_field_tag "answers[#{q.id}]", nil, class: "form-control answer-input", data: { question_id: q.id } %>
         </div>
       <% end %>
+
+      <%= hidden_field_tag :mode, "jp_to_en" %>
 
       <%= button_tag "回答する", type: "button", class: "btn btn-primary mt-3 submit-btn", data: { form_id: "exam-form-en-ja" } %>
     <% end %>
