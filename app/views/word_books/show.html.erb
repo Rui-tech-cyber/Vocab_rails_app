@@ -41,7 +41,7 @@
 
 <hr>
 
-<%= link_to "この英単語帳でテストを作成", new_exam_path(word_book_id: @word_book.id), class: "btn btn-secondary mb-3" %>
+<%= link_to "この英単語帳でテストをする", new_exam_path(word_book_id: @word_book.id), class: "btn btn-secondary mb-3" %>
 
 <%= button_to "この単語帳を削除", word_book_path(@word_book), method: :delete, class: "btn btn-danger mt-3", onclick: "return confirm('#{@word_book.title}を本当に削除しますか？');" %>
 
