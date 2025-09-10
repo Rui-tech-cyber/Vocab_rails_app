@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
   resources :exams, only: [:new, :show, :create] do
     resources :exam_answers, only: [:create]
+    member do
+      get :result
+    end
   end
 
   get "up" => "rails/health#show", as: :rails_health_check
