@@ -4,12 +4,22 @@ class ExamsController < ApplicationController
   def new
     @word_book = WordBook.find(params[:word_book_id])
     @word_book.exam&.destroy
-    @exam = Exam.create!(user: current_user, word_book: @word_book)
+
+    mode = params[:mode] || "en_to_jp"
+
+    @exam = Exam.create!(user: current_user, word_book: @word_book, mode: mode)
 
     @word_book.words.each do |word|
+      question_text = 
+      if @exam.en_to_jp?
+        "[#{word.term}]の意味は？"
+      else
+        "[#{word.meaning}]の英単語は？"
+      end
+
       @exam.exam_questions.create!(
         word: word,
-        question_text: "[#{word.term}]の意味は？"
+        question_text: question_text
       )
     end
 
@@ -28,4 +38,5 @@ class ExamsController < ApplicationController
     @correct_count = @answers.select(&:correct).count
     @incorrect_count = @answers.size - @correct_count
   end
+
 end
