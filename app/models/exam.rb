@@ -22,6 +22,8 @@
 #  fk_rails_...  (word_book_id => word_books.id)
 #
 class Exam < ApplicationRecord
+  enum mode: { en_to_jp: 0, jp_to_en: 1 }
+  
   belongs_to :user
   belongs_to :word_book
 
