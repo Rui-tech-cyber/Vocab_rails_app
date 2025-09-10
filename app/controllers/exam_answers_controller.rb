@@ -15,7 +15,7 @@ class ExamAnswersController < ApplicationController
 
       correct = answer_text.to_s.strip.downcase == question.word.term.to_s.strip.downcase
 
-      exam_answer = ExamAnswer.find_or_initialinze_by(
+      exam_answer = ExamAnswer.find_or_initialize_by(
         exam: exam,
         word: question.word,
         user: current_user
