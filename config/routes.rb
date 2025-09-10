@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :words, only: [:create]
 
-  resources :exams, only: [:new, :show, :create] do
+  resources :exams, only: [:new, :show] do
     resources :exam_answers, only: [:create]
     member do
       get :result
