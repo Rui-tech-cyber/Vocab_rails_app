@@ -1,1 +1,31 @@
-テスト結果ビューを作成
+<h1><%= @exam.word_book.title %>のテスト結果</h1>
+
+<div class="alert alert-info">
+  <p><strong>正解数:</strong> <%= @correct_count %></p>
+  <p><strong>不正解数:</strong> <%= @incorrect_count %></p>
+</div>
+
+<hr>
+
+<h3>回答一覧</h3>
+<% @answers.each do |answer| %>
+  <div class="mb-3 p-3 border rounded <%= answer.correct ? 'bg-light' : 'bg-warning' %>">
+    <p><strong>問題:</strong> [<%= answer.word.meaning %>]に対応する英単語は？</p>
+    <p><strong>あなたの回答:</strong> <%= answer.user_answer %></p>
+    <p><strong>正解:</strong> <%= answer.word.term %></p>
+    <% if answer.correct %>
+      <span class="badge bg-success">正解</span>
+    <% else %>
+      <span class="badge bg-success">不正解</span>
+    <% end %>
+  </div>
+<% end %>
+
+<hr>
+
+<div class="d-flex gap-2">
+  <%= link_to "もう一度挑戦する", new_exam_path(word_book_id: @exam.word_book.id), class: "btn btn-primary" %>
+  <%= link_to "単語帳に戻る", word_book_path(@exam.word_book), class: "btn btn-secondary" %>
+  <%= link_to "トップページに戻る", root_path, class: "btn btn-outline-dark" %>
+</div>
+      
