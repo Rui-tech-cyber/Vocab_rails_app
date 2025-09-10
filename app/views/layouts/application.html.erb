@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Vocab App" %></title>
+    <title><%= content_for(:title) || "Vocab" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -21,6 +21,7 @@
   </head>
 
   <body>
+    <%= render "layouts/header" %>
     <% if notice %>
       <div class="alert alert-success"><%= notice %></div>
     <% end %>
