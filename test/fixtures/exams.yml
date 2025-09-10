@@ -3,6 +3,7 @@
 # Table name: exams
 #
 #  id           :bigint           not null, primary key
+#  mode         :integer
 #  score        :integer
 #  title        :string
 #  created_at   :datetime         not null
