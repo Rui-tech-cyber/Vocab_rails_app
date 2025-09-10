@@ -17,9 +17,16 @@ class ExamsController < ApplicationController
     redirect_to exam_path(@exam)
   end
 
-
   def show
     @exam = Exam.find(params[:id])
     @questions = @exam.exam_questions.includes(:word)
+  end
+
+  def result
+    @exam = Exam.find(params[:id])
+    @answers = @exam.exam_answers.includes(:word)
+
+    @correct_count = @answers.select(&:correct).count
+    @incorrect_count = @answers.size - @correct_count
   end
 end
