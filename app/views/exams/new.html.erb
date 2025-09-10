@@ -1,2 +1,8 @@
-<h1>Exams#new</h1>
-<p>Find me in app/views/exams/new.html.erb</p>
+<%= form_with model: @exam, local: true do |f| %>
+  <div>
+    <%= f.label :mode, "出題モード" %><br>
+    <%= f.radio_button :mode, "en_to_jp" %> 英→日
+    <%= f.radio_button :mode, "jp_to_en" %> 日→英
+  </div>
+  <%= f.submit "テスト開始" %>
+<% end %>
