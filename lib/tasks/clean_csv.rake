@@ -6,14 +6,13 @@ namespace :words do
     file_path = "db/words.csv"
     count = 0
 
-    CSV.foreach(file_path, headers: true) do |row|
+    CSV.foreach(file_path, headers: true, liberal_parsing: true) do |row|
       term = row["term"].to_s.strip
       meaning = row["meaning"].to_s.strip
       example = row["example"].to_s.strip
 
       next if term.blank? || meaning.blank?
 
-      # term+meaning が DB に存在しない場合のみ作成
       unless Word.exists?(term: term, meaning: meaning)
         Word.create(term: term, meaning: meaning, example: example)
         count += 1
@@ -29,7 +28,7 @@ namespace :words do
     
     duplicates.each do |term, meaning|
       words = Word.where(term: term, meaning: meaning).order(:id)
-      words.offset(1).destroy_all # 最初の1件以外を削除
+      words.offset(1).destroy_all
     end
 
     puts "重複単語を整理しました。"
