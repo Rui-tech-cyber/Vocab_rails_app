@@ -3,6 +3,7 @@
 # Table name: word_books
 #
 #  id         :bigint           not null, primary key
+#  dummy      :boolean
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
