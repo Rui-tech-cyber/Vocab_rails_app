@@ -6,7 +6,7 @@ class Dictionary
   def self.search(term)
     results = []
     CSV.foreach(FILE_PATH, headers: true) do |row|
-      if row["term"].downcase == term.downcase
+      if row["term"].to_s.downcase == term.downcase
         results << {
           word: row["term"],
           meaning: row["meaning"],
