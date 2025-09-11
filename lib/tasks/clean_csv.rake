@@ -1,12 +1,10 @@
-require "csv"
-
 namespace :words do
   desc "words.csv から単語を DB に読み込む"
   task import_csv: :environment do
     file_path = Rails.root.join("db", "words.csv")
     count = 0
 
-    default_book = WordBook.first || WordBook.create!(title: "インポート用", user_id: User.first.id)
+    default_book = WordBook.find_or_create_by!(title: "インポート用", dummy: true, user: User.first)
 
     CSV.foreach(file_path, headers: true, liberal_parsing: true) do |row|
       term    = row["term"].to_s.strip
@@ -24,4 +22,3 @@ namespace :words do
     puts "#{count} 件の単語を DB に追加しました。"
   end
 end
-
