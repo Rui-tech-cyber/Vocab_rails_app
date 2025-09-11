@@ -13,10 +13,8 @@ namespace :words do
 
       next if term.blank? || meaning.blank?
 
-      unless Word.exists?(term: term, meaning: meaning)
-        Word.create(term: term, meaning: meaning, example: example)
-        count += 1
-      end
+      Word.create(term: term, meaning: meaning, example: example)
+      count += 1
     end
 
     puts "#{count} 件の単語を DB に追加しました。"

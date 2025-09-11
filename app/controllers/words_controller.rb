@@ -37,24 +37,29 @@ class WordsController < ApplicationController
 
   def search
     @results = []
-
+  
     if params[:term].present?
-      term = params[:term].to_s.strip
-
+      term = params[:term].strip
+  
       if term.match?(/[^a-zA-Z]/)
         flash.now[:alert] = "検索は英単語のみ対応しています。"
         return render :search
       end
-
-      @results = Dictionary.search(term)
-
-      if @results.empty?
-        flash.now[:alert] = "検索結果が見つかりませんでした。"
+  
+      @results = Word.where("term ILIKE ?", "%#{term}%").map do |w|
+        {
+          word: w.term,
+          meaning: w.meaning,
+          example: w.example.presence || "例文なし"
+        }
       end
+  
+      flash.now[:alert] = "検索結果が見つかりませんでした。" if @results.empty?
     end
-
+  
     render :search
   end
+
 
   private
 
