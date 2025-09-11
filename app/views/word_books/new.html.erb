@@ -1,12 +1,23 @@
-<h1>新しい単語帳作成</h1>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="text-center mb-4">新しい単語帳を作成</h2>
 
-<%= form_with model: @word_book, local: true do |f| %>
-  <div class="mb-3">
-    <%= f.label :title, "単語帳タイトル" %>
-    <%= f.text_field :title, class: "form-control" %>
+          <%= form_with model: @word_book, local: true do |f| %>
+            <div class="mb-3">
+              <%= f.label :title, "単語帳タイトル", class: "form-label fw-bold" %>
+              <%= f.text_field :title, class: "form-control", placeholder: "例: TOEIC用単語帳" %>
+            </div>
+
+            <div class="d-flex justify-content-center gap-3 mt-4">
+              <%= f.submit "作成", class: "btn btn-primary px-4" %>
+              <%= link_to "一覧に戻る", word_books_path, class: "btn btn-outline-secondary px-4" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-  <%= f.submit "作成", class: "btn btn-primary" %>
-<% end %>
-
-<hr>
-<%= link_to "一覧に戻る", word_books_path, class: "btn btn-secondary mt-3" %>
+</div>
