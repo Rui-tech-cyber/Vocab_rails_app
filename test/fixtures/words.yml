@@ -3,6 +3,7 @@
 # Table name: words
 #
 #  id           :bigint           not null, primary key
+#  example      :string
 #  meaning      :string
 #  mistake      :boolean
 #  term         :string
