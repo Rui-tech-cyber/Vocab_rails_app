@@ -1,0 +1,35 @@
+ja:
+  devise:
+    confirmations:
+      confirmed: "メールアドレスが確認されました。"
+      send_instructions: "確認用のメールを送信しました。"
+      already_confirmed: "すでに確認済みです。"
+    failure:
+      invalid: "メールアドレスまたはパスワードが違います。"
+      not_found_in_database: "メールアドレスまたはパスワードが違います。"
+      timeout: "セッションがタイムアウトしました。もう一度ログインしてください。"
+      unauthenticated: "ログインしてください。"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      already_signed_out: "すでにログアウトしています。"
+    registrations:
+      updated: "アカウント情報を更新しました。"
+      destroyed: "アカウントを削除しました。"
+      new:
+        signed_up: "アカウントを作成しました。"
+    passwords:
+      send_instructions: "パスワード再設定用のメールを送信しました。"
+      updated: "パスワードを変更しました。"
+      updated_not_active: "パスワードは更新されましたが、アカウントはまだ有効化されていません。"
+      no_token: "パスワードリセット用のURLが無効です。"
+      new:
+        forgot_your_password: "パスワードをお忘れですか？"
+        email: "メールアドレス"
+        submit: "送信"
+    unlocks:
+      send_instructions: "アカウントロック解除の方法を送信しました。"
+      unlocked: "アカウントのロックが解除されました。"
+    omniauth_callbacks:
+      success: "%{kind} アカウントによる認証に成功しました。"
+      failure: "%{kind} アカウントによる認証に失敗しました。理由: %{reason}"

@@ -22,15 +22,7 @@
 
   <body>
     <%= render "layouts/header" %>
-    <% if notice %>
-      <div class="alert alert-success"><%= notice %></div>
-    <% end %>
-
-    <% if alert %>
-      <div class="alert alert-danger"><%= alert %></div>
-    <% end %>
-
-
+    <%= render "shared/flash_messages" %>
     <%= yield %>
   </body>
 </html>
