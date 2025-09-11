@@ -28,10 +28,9 @@
       <%= link_to "パスワードをお忘れですか？", new_password_path(resource_name) %>
     </div>
 
-    <div class="text-center mt-4">
-      <small class="text-muted">
-        ※ログインしていなくても英単語検索はご利用いただけます
-      </small>
+    <div class="alert alert-info text-center mt-4 small">
+      ログインしていない状態でも英単語検索が利用できます。<br>
+      <%= link_to "英単語を検索する", search_words_path, class: "fw-bold text-purple" %>
     </div>
   </div>
 </div>
