@@ -1,27 +1,17 @@
-namespace :csv do
-  desc "重複を削除してCSVをクリーン化する"
-  task clean: :environment do
-    require "csv"
+namespace :words do
+  desc "重複する (term + meaning) の組み合わせを削除し、1つだけ残す"
+  task cleanup_duplicates: :environment do
+    duplicates = Word.select(:term, :meaning)
+                     .group(:term, :meaning)
+                     .having("COUNT(*) > 1")
 
-    input_path = Rails.root.join("db/words.csv")
-    output_path = Rails.root.join("db/words_clean.csv")
-
-    seen = {}
-    cleaned = []
-
-    CSV.foreach(input_path, headers: true) do |row|
-      key = row["word"].downcase.strip
-      next if seen[key] # 重複はスキップ
-
-      seen[key] = true
-      cleaned << row
+    duplicates.each do |dup|
+      records = Word.where(term: dup.term, meaning: dup.meaning).order(:id)
+      # 最初の1件だけ残して残りを削除
+      records.offset(1).destroy_all
+      puts "Cleaned duplicates for: #{dup.term} (#{dup.meaning})"
     end
 
-    CSV.open(output_path, "w") do |csv|
-      csv << cleaned.first.headers
-      cleaned.each { |row| csv << row }
-    end
-
-    puts "✅ Cleaned CSV saved to #{output_path}"
+    puts "✅ 重複削除完了！"
   end
 end
