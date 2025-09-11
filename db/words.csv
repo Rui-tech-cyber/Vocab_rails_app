@@ -9229,3 +9229,517 @@ zenith,頂点,The company reached its zenith in the 1990s.
 zero,ゼロ,Zero-based budgeting.
 zone,区域,The factory is located in an industrial zone.
 zoom,ズーム,Let's have a meeting on Zoom.
+apple,りんご,I ate an apple today.
+banana,バナナ,He peeled a banana for breakfast.
+book,本,She read a book in the park.
+car,車,He drove the car to work.
+cat,猫,The cat slept on the sofa.
+dog,犬,The dog chased the ball.
+house,家,They cleaned the house yesterday.
+school,学校,The children went to school.
+teacher,先生,The teacher wrote on the board.
+student,生徒,The student answered the question.
+water,水,I drink water after running.
+food,食べ物,We bought food at the market.
+coffee,コーヒー,She likes hot coffee in the morning.
+tea,お茶,He drank tea with his friend.
+computer,コンピュータ,The computer is on the desk.
+phone,電話,I called her on the phone.
+table,テーブル,We set the table for dinner.
+chair,椅子,Please sit on the chair.
+window,窓,The window is open.
+door,ドア,Close the door, please.
+city,都市,They live in a big city.
+country,国,He traveled to another country.
+river,川,The river flows slowly.
+mountain,山,We climbed the mountain yesterday.
+tree,木,A bird sat on the tree.
+flower,花,She picked a red flower.
+grass,草,The children played on the grass.
+road,道,The road was very busy.
+street,通り,There is a cafe on the street.
+market,市場,We visited the market this morning.
+store,店,She works at the store.
+shop,商店,I bought a hat at the shop.
+friend,友達,My friend called me tonight.
+family,家族,He invited his family to dinner.
+mother,母,Mother made a cake.
+father,父,Father fixed the shelf.
+sister,姉妹,My sister studies Japanese.
+brother,兄弟,His brother is a doctor.
+child,子供,The child laughed loudly.
+baby,赤ちゃん,The baby slept peacefully.
+doctor,医者,She visited the doctor yesterday.
+nurse,看護師,The nurse checked his temperature.
+engineer,技術者,My friend is an engineer.
+artist,芸術家,The artist painted a picture.
+music,音楽,She listens to music daily.
+song,歌,He sang a happy song.
+dance,踊り,They learned a dance.
+film,映画,We watched a new film.
+movie,映画,The movie starts at seven.
+game,ゲーム,He played a game with his sister.
+play,遊ぶ,Children play in the yard.
+work,仕事,She goes to work by train.
+job,職業,He found a new job.
+money,お金,She saved money for travel.
+bread,パン,He bought fresh bread.
+butter,バター,Spread butter on the toast.
+cheese,チーズ,She likes cheese and crackers.
+egg,卵,I boiled an egg for lunch.
+milk,牛乳,He poured milk into a glass.
+soup,スープ,She served hot soup.
+salt,塩,Add a little salt to the salad.
+sugar,砂糖,Put sugar in your coffee.
+knife,ナイフ,Be careful with the knife.
+plate,皿,Place the food on the plate.
+cup,カップ,He filled the cup with tea.
+bottle,ボトル,She opened the water bottle.
+clock,時計,The clock shows nine o'clock.
+watch,腕時計,He looked at his watch.
+calendar,カレンダー,Mark the date on the calendar.
+year,年,This year is busy.
+month,月,She will travel next month.
+day,日,Today is a sunny day.
+week,週,He works five days a week.
+today,今日,Today I will study English.
+tomorrow,明日,We will meet tomorrow.
+yesterday,昨日,Yesterday it rained all day.
+morning,朝,She jogs every morning.
+night,夜,They returned home at night.
+afternoon,午後,We will meet in the afternoon.
+evening,夕方,He walks in the evening.
+sun,太陽,The sun is bright today.
+moon,月,The moon is full tonight.
+star,星,We saw a star in the sky.
+weather,天気,The weather is warm today.
+rain,雨,It will rain this afternoon.
+snow,雪,Snow covered the ground.
+wind,風,The wind blew strongly.
+cloud,雲,A cloud covered the sun.
+hot,暑い,It is hot in July.
+cold,寒い,The water is cold.
+warm,暖かい,The room feels warm.
+cool,涼しい,It is cool at night.
+summer,夏,Summer is a fun season.
+winter,冬,We wear coats in winter.
+spring,春,Flowers bloom in spring.
+autumn,秋,Leaves fall in autumn.
+love,愛,I love my family.
+like,好き,I like blue apples.
+hate,嫌い,He hates loud noise.
+need,必要,I need a new pen.
+want,欲しい,She wants a glass of juice.
+see,見る,I can see the bird.
+look,見る,Look at the red car.
+watch,見る,We watch the stars tonight.
+hear,聞く,Can you hear the music?
+listen,聞く,Listen to the teacher.
+speak,話す,Please speak slowly.
+talk,話す,They talk every evening.
+read,読む,He will read a short story.
+write,書く,She can write her name.
+study,勉強する,I study English every day.
+learn,学ぶ,Children learn quickly.
+teach,教える,He will teach math today.
+think,考える,I think this is true.
+know,知る,Do you know the answer?
+understand,理解する,I understand the problem.
+remember,覚える,Remember the meeting time.
+forget,忘れる,Don't forget your keys.
+open,開ける,Open the window now.
+close,閉める,Close the door gently.
+start,始める,Start the test now.
+finish,終える,She will finish the work.
+stop,止める,Please stop the car.
+go,行く,We go to school early.
+come,来る,Please come to my party.
+walk,歩く,We walk to the store.
+run,走る,I run every morning.
+swim,泳ぐ,He can swim well.
+drive,運転する,She will drive to the city.
+ride,乗る,They ride the bus to school.
+fly,飛ぶ,Birds fly in the sky.
+sit,座る,Sit on the chair.
+stand,立つ,Stand near the door.
+build,建てる,They build a new house.
+create,作る,Create a simple drawing.
+make,作る,Make a sandwich for lunch.
+bring,持ってくる,Bring your book tomorrow.
+send,送る,Send the letter today.
+receive,受け取る,She will receive a package.
+help,助ける,Can you help me now?
+use,使う,Use the pen to write.
+find,見つける,Find the hidden key.
+lose,失う,He will not lose hope.
+keep,保つ,Keep the windows closed.
+break,壊す,Be careful not to break it.
+fix,直す,Can you fix the lamp?
+clean,掃除する,Please clean your desk.
+wash,洗う,Wash your hands before dinner.
+call,呼ぶ,Call me after class.
+answer,答える,Answer the question quickly.
+ask,尋ねる,Ask a friend for help.
+reply,返事する,Reply to the email.
+buy,買う,I will buy a gift.
+sell,売る,They sell fresh fruit.
+price,価格,What is the price?
+cheap,安い,This shirt is cheap.
+expensive,高い,That bag is expensive.
+new,新しい,She bought a new coat.
+old,古い,The house looks old.
+young,若い,My cousin is young.
+small,小さい,The puppy is small.
+big,大きい,They live in a big house.
+short,短い,This pencil is short.
+long,長い,The road is long.
+high,高い,The mountain is high.
+low,低い,The shelf is low.
+early,早い,We woke up early.
+late,遅い,He arrived late today.
+right,右/正しい,Turn right at the corner.
+left,左,Take the left path.
+first,最初の,She was the first to finish.
+last,最後の,He came in last place.
+best,最高の,This is my best work.
+worst,最悪の,That was the worst day.
+safe,安全な,The helmet keeps you safe.
+dangerous,危険な,Climbing there is dangerous.
+beautiful,美しい,The garden is beautiful.
+ugly,醜い,He said the chair is ugly.
+interesting,面白い,The book is interesting.
+boring,退屈な,The lecture was boring.
+fun,楽しい,The trip was fun.
+exciting,刺激的な,The game was exciting.
+easy,簡単な,This question is easy.
+difficult,難しい,The test was difficult.
+hard,難しい,This task is hard.
+strong,強い,She is strong enough to lift it.
+weak,弱い,He felt weak after illness.
+healthy,健康な,She eats healthy food.
+sick,病気,He is sick today.
+hotdog,ホットドッグ,I ate a hotdog at the fair.
+map,地図,Use the map to find the road.
+ticket,切符,Buy a ticket at the counter.
+museum,博物館,We visited the museum yesterday.
+library,図書館,Study quietly in the library.
+park,公園,They play soccer in the park.
+beach,海辺,We walked along the beach.
+airport,空港,He arrived at the airport early.
+station,駅,Meet me at the station.
+garden,庭,She waters the garden daily.
+kitchen,台所,Cook in the kitchen today.
+bathroom,浴室,The bathroom is upstairs.
+bedroom,寝室,The bedroom is on the second floor.
+closet,押入れ,Put your coat in the closet.
+mirror,鏡,Look in the mirror.
+pillow,枕,Rest your head on the pillow.
+blanket,毛布,Cover yourself with the blanket.
+lamp,ランプ,Turn on the lamp, please.
+battery,電池,The battery needs charging.
+computer,コンピュータ,The computer is slow today.
+internet,インターネット,She uses the internet for research.
+email,電子メール,Send an email to me.
+password,パスワード,Change your password often.
+account,アカウント,Create an account to sign in.
+document,文書,Save the document before closing.
+file,ファイル,Open the file on your desk.
+folder,フォルダ,Place the papers in the folder.
+printer,プリンター,Print the report with the printer.
+screen,画面,The screen is too bright.
+camera,カメラ,She bought a new camera.
+photo,写真,Take a photo of the sunset.
+note,メモ,Write a note to remind you.
+message,メッセージ,Leave a message after the beep.
+plan,計画,Make a plan for the weekend.
+project,プロジェクト,They finished the project on time.
+team,チーム,Our team won the game.
+leader,リーダー,The leader gave instructions.
+goal,目標,Set a goal for study.
+schedule,予定,Check the schedule for meetings.
+task,仕事,Complete the task by noon.
+report,報告書,Submit the report today.
+meeting,会議,We have a meeting at two.
+appointment,予約,Make an appointment with the doctor.
+event,イベント,Attend the event this weekend.
+party,パーティー,We will host a small party.
+gift,贈り物,She gave him a gift.
+ticket,切符,Keep your ticket safe.
+ticketed,チケット済み,They are ticketed for entry.
+term,meaning,example
+pencil,鉛筆,I wrote with a pencil.
+pen,ペン,She lost her blue pen.
+eraser,消しゴム,Use an eraser to fix mistakes.
+marker,マーカー,He drew with a red marker.
+paper,紙,Please give me a sheet of paper.
+notebook,ノート,She opened her notebook.
+bag,かばん,He carries a bag to school.
+shoes,靴,Her shoes are very clean.
+shirt,シャツ,He bought a new shirt.
+pants,ズボン,These pants are too big.
+skirt,スカート,She wore a long skirt.
+dress,ドレス,The dress is beautiful.
+hat,帽子,He put on his hat.
+jacket,上着,She wore a warm jacket.
+coat,コート,He hung his coat on the hook.
+sock,靴下,I need a pair of socks.
+glove,手袋,She wore a glove in winter.
+scarf,マフラー,The scarf is very soft.
+belt,ベルト,He wore a brown belt.
+ring,指輪,The ring is expensive.
+necklace,ネックレス,She bought a gold necklace.
+watch,腕時計,His watch is very old.
+wallet,財布,She put money in her wallet.
+purse,ハンドバッグ,She bought a new purse.
+key,鍵,I lost my key yesterday.
+lock,錠,He closed the lock.
+bagpack,リュック,He carries books in his backpack.
+bus,バス,We waited for the bus.
+train,列車,The train leaves at six.
+subway,地下鉄,I took the subway today.
+ship,船,The ship is very large.
+boat,ボート,He rowed the boat.
+bicycle,自転車,She rides a bicycle to school.
+motorcycle,バイク,He bought a motorcycle.
+truck,トラック,The truck carried boxes.
+driver,運転手,The driver smiled at us.
+passenger,乗客,The passenger sat quietly.
+ticket,切符,He bought a train ticket. 
+station,駅,We met at the station.
+bridge,橋,The bridge is long.
+tunnel,トンネル,The car went through the tunnel.
+airport,空港,They arrived at the airport. 
+flight,飛行,The flight was delayed.
+airplane,飛行機,The airplane landed safely.
+pilot,操縦士,The pilot greeted the passengers.
+seat,座席,He took a window seat.
+luggage,荷物,Her luggage was very heavy.
+passport,パスポート,Show your passport at the gate.
+visa,ビザ,He applied for a visa.
+border,国境,They crossed the border.
+map,地図,He looked at the map. 
+compass,コンパス,Use a compass to find north.
+north,北,Canada is north of the USA.
+south,南,He lives in the south.
+east,東,The sun rises in the east.
+west,西,The sun sets in the west.
+ocean,海,The ocean is very deep.
+sea,海,We swam in the sea.
+lake,湖,The lake is quiet.
+island,島,We visited a small island.
+desert,砂漠,The desert is very hot.
+forest,森,He walked through the forest.
+jungle,ジャングル,The jungle is dangerous.
+farm,農場,They worked on a farm.
+field,畑,He planted corn in the field.
+village,村,The village is peaceful.
+town,町,They live in a small town.
+capital,首都,Tokyo is the capital of Japan.
+country,国,France is a beautiful country. 
+nation,国家,The nation celebrated the holiday.
+government,政府,The government made a rule.
+king,王,The king wore a crown.
+queen,女王,The queen smiled.
+prince,王子,The prince is young.
+princess,王女,The princess wore a dress.
+president,大統領,The president spoke on TV.
+leader,指導者,The leader made a speech. 
+citizen,市民,Every citizen has rights.
+police,警察,The police arrived quickly.
+officer,警官,The officer helped me.
+soldier,兵士,The soldier marched.
+army,軍隊,The army protected the city.
+war,戦争,The war lasted many years.
+peace,平和,We all want peace.
+law,法律,The law is important.
+rule,規則,Follow the rule.
+court,裁判所,He went to court.
+judge,裁判官,The judge asked questions.
+lawyer,弁護士,The lawyer gave advice.
+hospital,病院,She went to the hospital.
+clinic,診療所,The clinic opens at nine.
+medicine,薬,Take this medicine twice a day.
+pill,錠剤,She swallowed a pill.
+injection,注射,He got an injection.
+health,健康,Health is very important. 
+illness,病気,She recovered from her illness.
+disease,病気,This disease is rare.
+fever,熱,He has a fever today.
+injury,けが,The injury was serious.
+pain,痛み,He felt pain in his leg.
+blood,血,The nurse took blood.
+term,meaning,example
+tooth,歯,He brushed his tooth.
+teeth,歯,She has white teeth.
+mouth,口,Open your mouth.
+nose,鼻,He touched his nose.
+ear,耳,She cleaned her ear.
+eye,目,My eye hurts.
+face,顔,He washed his face.
+head,頭,She shook her head.
+hair,髪,Her hair is long.
+neck,首,He wore a necklace on his neck.
+shoulder,肩,She carried a bag on her shoulder.
+arm,腕,He raised his arm.
+hand,手,Wash your hand.
+finger,指,She cut her finger.
+nail,爪,Her nail is painted.
+leg,脚,He broke his leg.
+foot,足,Wash your foot.
+toe,つま先,His toe hurts.
+back,背中,She lay on her back.
+stomach,胃,My stomach hurts.
+heart,心臓,His heart beats fast.
+brain,脳,The brain controls the body.
+skin,皮膚,Her skin is soft.
+bone,骨,He broke a bone.
+muscle,筋肉,He has strong muscle.
+voice,声,Her voice is beautiful.
+sound,音,The sound is loud.
+noise,騒音,The noise is annoying.
+silence,静けさ,We enjoyed the silence.
+light,光,The light is bright.
+dark,暗闇,He is afraid of the dark.
+shadow,影,The shadow is long.
+color,色,What is your favorite color?
+red,赤,The apple is red.
+blue,青,The sky is blue.
+green,緑,The grass is green.
+yellow,黄,The sun is yellow.
+black,黒,The cat is black.
+white,白,The snow is white.
+brown,茶色,The table is brown.
+gray,灰色,The cloud is gray.
+orange,オレンジ,She wore an orange dress.
+pink,ピンク,The flower is pink.
+purple,紫,He likes purple socks.
+gold,金,The ring is gold.
+silver,銀,The coin is silver.
+money,お金,He saved money. 
+coin,硬貨,He found a coin.
+note,紙幣,She paid with a note. 
+bank,銀行,He works at a bank.
+card,カード,She used a card to pay.
+credit,信用,He has good credit.
+debt,借金,He has a big debt.
+loan,貸付,She applied for a loan.
+interest,利息,The bank adds interest.
+accountant,会計士,The accountant is busy.
+office,事務所,He works in an office.
+desk,机,The desk is clean.
+chairman,議長,The chairman spoke.
+manager,管理者,The manager gave orders.
+worker,労働者,The worker is tired.
+company,会社,She joined a new company.
+factory,工場,The factory makes cars.
+machine,機械,The machine stopped.
+tool,道具,Use this tool carefully.
+hammer,ハンマー,He hit the nail with a hammer.
+screw,ねじ,He tightened the screw.
+knife,ナイフ,The knife is sharp. 
+spoon,スプーン,She used a spoon.
+fork,フォーク,He picked up food with a fork.
+chopstick,箸,She ate rice with chopsticks.
+plate,皿,The plate is broken. 
+bowl,ボウル,The bowl is full.
+pot,鍋,She cooked soup in a pot.
+pan,フライパン,He fried eggs in a pan.
+oven,オーブン,The oven is hot.
+stove,コンロ,He turned off the stove.
+microwave,電子レンジ,She heated food in the microwave.
+fridge,冷蔵庫,The fridge is empty.
+freezer,冷凍庫,The freezer is full of ice.
+sink,流し,Wash dishes in the sink.
+faucet,蛇口,The faucet is leaking.
+soap,石鹸,He washed with soap.
+shampoo,シャンプー,She bought shampoo.
+toothbrush,歯ブラシ,He used a toothbrush.
+toothpaste,歯磨き粉,Put toothpaste on the brush.
+towel,タオル,He dried his hands with a towel.
+shower,シャワー,She took a shower.
+bath,風呂,He took a hot bath.
+bed,ベッド,She lay on the bed.
+sheet,シーツ,The sheet is clean.
+pillow,枕,He hugged the pillow. 
+blanket,毛布,She folded the blanket. 
+sofa,ソファ,They sat on the sofa.
+chair,椅子,He moved the chair. 
+floor,床,The floor is dirty.
+ceiling,天井,The ceiling is high.
+wall,壁,He painted the wall.
+roof,屋根,The roof is red.
+door,ドア,The door is closed. 
+window,窓,The window is open. 
+garden,庭,She works in the garden. 
+yard,庭,Children play in the yard.
+fence,塀,The fence is tall.
+gate,門,He opened the gate.
+streetlight,街灯,The streetlight is bright.
+sidewalk,歩道,They walked on the sidewalk.
+crosswalk,横断歩道,Cross at the crosswalk.
+traffic,交通,The traffic is heavy.
+signal,信号,The signal turned red.
+sign,標識,The sign is clear.
+shopper,買い物客,The shopper bought fruit.
+cashier,レジ係,The cashier smiled.
+customer,客,The customer waited.
+seller,売り手,The seller shouted.
+marketplace,市場,The marketplace is busy.
+mall,ショッピングモール,We met at the mall.
+restaurant,レストラン,We ate at a restaurant.
+cafe,カフェ,They sat in a cafe.
+bar,バー,He went to the bar.
+menu,メニュー,She read the menu.
+dish,料理,This dish is spicy.
+meal,食事,They enjoyed the meal.
+breakfast,朝食,I ate breakfast early.
+lunch,昼食,We had lunch together.
+dinner,夕食,She cooked dinner.
+snack,軽食,He bought a snack.
+fruit,果物,This fruit is sweet.
+vegetable,野菜,She bought a vegetable.
+meat,肉,He cooked meat for dinner.
+fish,魚,We caught a fish.
+rice,米,I eat rice every day.
+noodle,麺,He likes noodle soup.
+bread,パン,She baked bread. 
+cake,ケーキ,They shared a cake.
+pie,パイ,She baked an apple pie.
+cookie,クッキー,I ate a cookie.
+candy,飴,He gave me candy.
+chocolate,チョコレート,She loves chocolate.
+icecream,アイスクリーム,We ate icecream.
+juice,ジュース,He drank orange juice.
+soda,ソーダ,She bought a soda.
+beer,ビール,He ordered beer.
+wine,ワイン,They drank red wine.
+whiskey,ウイスキー,He tasted whiskey.
+watermelon,スイカ,She ate watermelon.
+strawberry,いちご,He picked a strawberry.
+peach,桃,The peach is soft.
+grape,ぶどう,We ate a grape.
+lemon,レモン,He added lemon to water.
+lime,ライム,She cut a lime.
+pear,梨,The pear is juicy.
+plum,梅,He bought a plum.
+cherry,さくらんぼ,She ate a cherry.
+pineapple,パイナップル,We shared a pineapple.
+mango,マンゴー,He peeled a mango.
+kiwi,キウイ,She sliced a kiwi.
+coconut,ココナッツ,He drank coconut juice.
+melon,メロン,This melon is sweet.
+pumpkin,かぼちゃ,She cooked pumpkin soup.
+onion,玉ねぎ,He cut an onion.
+carrot,にんじん,She peeled a carrot.
+potato,じゃがいも,He baked a potato.
+tomato,トマト,She sliced a tomato.
+cucumber,きゅうり,He ate a cucumber.
+lettuce,レタス,She washed lettuce.
+cabbage,キャベツ,He boiled cabbage.
+corn,とうもろこし,They roasted corn.
+bean,豆,She cooked beans.
+pea,エンドウ豆,He ate peas.
+mushroom,きのこ,She fried mushrooms.
+pepper,ピーマン,He cut a pepper.
+garlic,にんにく,She used garlic.
+ginger,生姜,He added ginger to tea.
