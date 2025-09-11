@@ -3,32 +3,25 @@ require "csv"
 namespace :words do
   desc "words.csv から単語を DB に読み込む"
   task import_csv: :environment do
-    file_path = "db/words.csv"
+    file_path = Rails.root.join("db", "words.csv")
     count = 0
 
+    default_book = WordBook.first || WordBook.create!(title: "インポート用", user_id: User.first.id)
+
     CSV.foreach(file_path, headers: true, liberal_parsing: true) do |row|
-      term = row["term"].to_s.strip
+      term    = row["term"].to_s.strip
       meaning = row["meaning"].to_s.strip
       example = row["example"].to_s.strip
 
       next if term.blank? || meaning.blank?
 
-      Word.create(term: term, meaning: meaning, example: example)
+      word = ::Word.find_or_initialize_by(term: term, meaning: meaning, word_book: default_book)
+      word.example = example
+      word.save!
       count += 1
     end
 
     puts "#{count} 件の単語を DB に追加しました。"
   end
-
-  desc "DB の重複単語を整理（term+meaning が同じものは1件だけ残す）"
-  task cleanup_duplicates: :environment do
-    duplicates = Word.group(:term, :meaning).having("count(*) > 1").pluck(:term, :meaning)
-    
-    duplicates.each do |term, meaning|
-      words = Word.where(term: term, meaning: meaning).order(:id)
-      words.offset(1).destroy_all
-    end
-
-    puts "重複単語を整理しました。"
-  end
 end
+
