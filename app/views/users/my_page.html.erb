@@ -1,45 +1,55 @@
-<h1><%= @user.name %>さんのマイページ</h1>
+<div class="container my-4">
+  <h1 class="text-center mb-5"><%= @user.name %>さんのマイページ</h1>
 
-<h2>最後にテストした単語帳</h2>
+  <section class="mb-5">
+    <h3 class="text-center mb-4">最後にテストした単語帳</h3>
 
-<% if @exams.any? %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>単語帳</th>
-        <th>最後に学習した日</th>
-        <th>正解数</th>
-        <th>不正解数</th>
-        <th>結果を見る</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @exams.each do |exam| %>
-        <tr>
-          <td><%= exam.word_book.title %></td>
-          <td>
-            <% exam_date = exam.created_at.in_time_zone("Asia/Tokyo").to_date %>
-            <% today = Time.current.in_time_zone("Asia/Tokyo").to_date %>
-            <% days_ago = (today - exam_date).to_i %>
-            <%= case days_ago
-                when 0
-                  "今日"
-                when 1
-                  "昨日"
-                else
-                  "#{days_ago}日前"
-                end %>
-          </td>
-          <td><%= exam.exam_answers.select(&:correct).count %></td>
-          <td><%= exam.exam_answers.size - exam.exam_answers.select(&:correct).count %></td>
-          <td><%= link_to "結果を見る", result_exam_path(exam), class: "btn btn-sm btn-primary" %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>まだ学習履歴はありません。</p>
-<% end %>
+    <% if @exams.any? %>
+      <div class="table-responsive">
+        <table class="table table-hover align-middle text-center">
+          <thead class="table-light">
+            <tr>
+              <th>単語帳</th>
+              <th>最後に学習した日</th>
+              <th>正解数</th>
+              <th>不正解数</th>
+              <th>結果を見る</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @exams.each do |exam| %>
+              <tr>
+                <td><%= exam.word_book.title %></td>
+                <td>
+                  <% exam_date = exam.created_at.in_time_zone("Asia/Tokyo").to_date %>
+                  <% today = Time.current.in_time_zone("Asia/Tokyo").to_date %>
+                  <% days_ago = (today - exam_date).to_i %>
+                  <%= case days_ago
+                      when 0
+                        "今日"
+                      when 1
+                        "昨日"
+                      else
+                        "#{days_ago}日前"
+                      end %>
+                </td>
+                <td><%= exam.exam_answers.select(&:correct).count %></td>
+                <td><%= exam.exam_answers.size - exam.exam_answers.select(&:correct).count %></td>
+                <td>
+                  <%= link_to "結果を見る", result_exam_path(exam), class: "btn btn-sm btn-primary rounded-pill shadow-sm" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p class="text-center">まだ学習履歴はありません。</p>
+    <% end %>
+  </section>
 
-<%= link_to "作成した単語帳一覧を確認する", word_books_path, class: "btn btn-secondary mt-3" %><br />
-<%= link_to "トップページに戻る", root_path, class: "btn btn-secondary mt-3" %>
+  <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+    <%= link_to "作成した単語帳一覧を確認する", word_books_path, class: "btn btn-secondary btn-lg rounded-pill shadow-sm" %>
+    <%= link_to "トップページに戻る", root_path, class: "btn btn-outline-secondary btn-lg rounded-pill shadow-sm" %>
+  </div>
+</div>
