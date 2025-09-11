@@ -22,5 +22,7 @@ class WordBook < ApplicationRecord
 
   has_many :words, dependent: :destroy
   has_one :exam, dependent: :destroy
+
+  scope :non_dummy, -> { where(dummy: false) }
   
 end
