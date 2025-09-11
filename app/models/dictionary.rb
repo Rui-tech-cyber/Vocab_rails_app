@@ -1,19 +1,21 @@
 require "csv"
 
 class Dictionary
-  FILE_PATH = Rails.root.join("db/dictionaries/words.csv")
+  CSV_PATH = Rails.root.join("db/words.csv")
 
   def self.search(term)
     results = []
-    CSV.foreach(FILE_PATH, headers: true) do |row|
-      if row["term"].to_s.downcase == term.downcase
-        results << {
-          word: row["term"],
-          meaning: row["meaning"],
-          example: row["example"]
-        }
+
+    CSV.foreach(CSV_PATH, headers: true) do |row|
+      word = row["word"].to_s.strip
+      meaning = row["meaning"].to_s.strip
+      example = row["example"].to_s.strip
+
+      if word.downcase.include?(term.downcase)
+        results << { word: word, meaning: meaning, example: example }
       end
     end
+
     results
   end
 end
