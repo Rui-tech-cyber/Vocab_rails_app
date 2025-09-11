@@ -1,3 +1,5 @@
+require "csv"
+
 namespace :words do
   desc "words.csv から単語を DB に読み込む"
   task import_csv: :environment do
