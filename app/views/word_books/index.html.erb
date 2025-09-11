@@ -3,7 +3,7 @@
 <%= link_to "新しい単語帳を作成", new_word_book_path, class: "btn btn-primary mb-3" %>
 
 <ul>
-  <% @word_books.each do |wb| %>
+  <% current_user.word_books.non_dummy.each do |wb| %>
     <li>
       <%= link_to wb.title, word_book_path(wb) %>
       (作成日: <%= wb.created_at.strftime("%Y-%m-%d") %>)
