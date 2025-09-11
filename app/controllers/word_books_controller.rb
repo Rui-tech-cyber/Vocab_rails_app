@@ -3,7 +3,7 @@ class WordBooksController < ApplicationController
   before_action :set_wordbook, only: [:show, :edit, :update, :destroy]
 
   def index
-    @word_books = current_user.word_books.order(created_at: :desc)
+    @word_books = current_user.word_books.non_dummy.order(created_at: :desc)
   end
 
   def show
@@ -22,9 +22,6 @@ class WordBooksController < ApplicationController
       flash.now[:alert] = "作成に失敗しました。"
       render :new
     end
-  end
-
-  def edit
   end
 
   def update
