@@ -53,7 +53,7 @@
             <%= f.hidden_field :word_book_id, id: "modal_word_book_id" %>
             <div class="mb-3">
               <%= label_tag "word[word_book_id]", "単語帳" %>
-              <%= select_tag "word[word_book_id]", options_from_collection_for_select(current_user.word_books, :id, :title), id: "word_book_select", class: "form-select" %>
+              <%= select_tag "word[word_book_id]", options_from_collection_for_select(current_user.word_books.where(dummy: [false, nil]), :id, :title), id: "word_book_select", class: "form-select" %>
             </div>
             <%= submit_tag "保存する", class: "btn btn-success" %>
           <% end %>

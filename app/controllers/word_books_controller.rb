@@ -3,7 +3,7 @@ class WordBooksController < ApplicationController
   before_action :set_wordbook, only: [:show, :edit, :update, :destroy]
 
   def index
-    @word_books = current_user.word_books.where(dummy: false).order(created_at: :desc)
+    @word_books = current_user.word_books.where(dummy: [false, nil]).order(created_at: :desc).limit(5)
   end
 
   def show
