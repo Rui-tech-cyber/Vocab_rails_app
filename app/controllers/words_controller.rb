@@ -5,6 +5,7 @@ class WordsController < ApplicationController
 
   def new
     @word = @word_book.words.new
+    @words = @word_book.words.order(created_at: :desc)
   end
 
   def create

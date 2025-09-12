@@ -4,7 +4,15 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 
 require 'capybara/rspec'
-require 'selenium/webdriver'
+require 'warden'
+
+RSpec.describe "WordBooks", type: :system do
+  before do
+    driven_by(:selenium_chrome_headless)
+  end
+end
+
+
 
 Capybara.javascript_driver = :selenium_chrome_headless
 

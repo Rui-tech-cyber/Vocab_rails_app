@@ -22,7 +22,11 @@
 
   <body>
     <%= render "layouts/header" %>
-    <%= render "shared/flash_messages" %>
+
+    <% flash.each do |key, message| %>
+      <p class="<%= key %>"><%= message %></p>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

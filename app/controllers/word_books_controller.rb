@@ -15,7 +15,7 @@ class WordBooksController < ApplicationController
   end
 
   def create
-    @word_book = current_user.word_books.build(word_book_params)
+    @word_book = current_user.word_books.new(word_book_params)
     if @word_book.save
       redirect_to word_books_path, notice: "#{@word_book.title}を作成しました。"
     else
