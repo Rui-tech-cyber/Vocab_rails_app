@@ -1,4 +1,5 @@
 <h1 class="mb-4 text-center">登録済み単語一覧</h1>
+
 <div class="row g-3">
   <% @words.each do |word| %>
     <div class="col-12 col-md-6">
@@ -12,7 +13,7 @@
           </div>
           <div class="d-flex gap-2">
             <%= link_to "編集", edit_word_book_word_path(@word_book, word), class: "btn btn-sm btn-warning" %>
-            <%= button_to "削除", "#", class: "btn btn-sm btn-danger delete-word-btn", data: { term: word.term, url: word_book_word_path(@word_book, word) }, method: :delete %>
+            <button type="button" class="btn btn-sm btn-danger delete-word-btn" data-term="<%= word.term %>" data-url="<%= word_book_word_path(@word_book, word) %>">削除</button>
           </div>
         </div>
       </div>
@@ -27,63 +28,79 @@
         <h5 class="modal-title">単語を削除しますか？</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-center">
         <p id="deleteModalWordTitle"></p>
-        <%= button_to "削除する", "#", method: :delete, class: "btn btn-danger", id: "confirmDeleteWordBtn" %>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+        <div class="d-flex justify-content-center gap-2">
+          <%= button_to "削除する", "#", method: :delete, class: "btn btn-danger", id: "confirmDeleteWordBtn" %>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <hr>
-<h4><%= @word_book.title %>に単語を追加</h4>
+<h4 class="mb-3 text-center"><%= @word_book.title %> に単語を追加</h4>
 
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs justify-content-center">
   <li class="nav-item">
-    <a class="nav-link active" data-bs-toggle="tab" href="#manual">手動で単語を追加</a>
+    <a class="nav-link active" data-bs-toggle="tab" href="#manual">手動で追加</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-bs-toggle="tab" href="#search">検索で単語を追加</a>
+    <a class="nav-link" data-bs-toggle="tab" href="#search">検索で追加</a>
   </li>
 </ul>
 
-<div class="tab-content mt-3">
+<div class="tab-content mt-4">
   <div class="tab-pane fade show active" id="manual">
-    <%= form_with model: [@word_book, @word], local: true do |f| %>
-      <div class="mb-3">
-        <%= f.label :term, "英単語" %>
-        <%= f.text_field :term, class: "form-control" %>
+    <div class="d-flex justify-content-center">
+      <div style="max-width: 700px; width: 100%;">
+        <%= form_with model: [@word_book, @word], local: true do |f| %>
+          <div class="mb-3">
+            <%= f.label :term, "英単語", class: "form-label fw-bold" %>
+            <%= f.text_field :term, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= f.label :meaning, "意味", class: "form-label fw-bold" %>
+            <%= f.text_field :meaning, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= f.label :example, "例文（任意）", class: "form-label fw-bold" %>
+            <%= f.text_area :example, class: "form-control", rows: 2 %>
+          </div>
+          <div class="text-center">
+            <%= f.submit "追加", class: "btn btn-primary" %>
+          </div>
+        <% end %>
       </div>
-      <div class="mb-3">
-        <%= f.label :meaning, "意味" %>
-        <%= f.text_field :meaning, class: "form-control" %>
-      </div>
-      <div class="mb-3">
-        <%= f.label :example, "例文（任意）" %>
-        <%= f.text_area :example, class: "form-control" %>
-      </div>
-      <%= f.submit "追加", class: "btn btn-primary" %>
-    <% end %>
+    </div>
   </div>
 
   <div class="tab-pane fade" id="search">
-    <%= form_with url: search_words_path, method: :get, local: true do |f| %>
-      <div class="mb-3">
-        <%= f.label :term, "英単語を検索" %>
-        <%= f.text_field :term, class: "form-control" %>
+    <div class="d-flex justify-content-center">
+      <div style="max-width: 300px; width: 100%;">
+        <%= form_with url: search_words_path, method: :get, local: true do |f| %>
+          <div class="mb-3">
+            <%= f.label :term, "英単語を検索", class: "form-label fw-bold" %>
+            <%= f.text_field :term, class: "form-control" %>
+          </div>
+          <div class="text-center">
+            <%= f.submit "検索", class: "btn btn-primary" %>
+          </div>
+        <% end %>
       </div>
-      <%= f.submit "検索", class: "btn btn-primary" %>
-    <% end %>
+    </div>
 
     <% if @results.present? %>
-      <ul class="mt-3">
+      <ul class="mt-3 list-unstyled text-center">
         <% @results.each do |res| %>
-          <li>
+          <li class="mb-3">
             <strong><%= res[:word] %></strong> : <%= res[:meaning] %>
             <br>
-            例文: <%= res[:example] %>
-            <%= button_to "追加", word_book_words_path(@word_book, word: { term: res[:word], meaning: res[:meaning], example: res[:example] }), method: :post, class: "btn btn-sm btn-success mt-1" %>
+            <small class="text-muted">例文: <%= res[:example] %></small>
+            <div class="mt-2">
+              <%= button_to "追加", word_book_words_path(@word_book, word: { term: res[:word], meaning: res[:meaning], example: res[:example] }), method: :post, class: "btn btn-sm btn-success" %>
+            </div>
           </li>
         <% end %>
       </ul>
@@ -91,7 +108,14 @@
   </div>
 </div>
 
-<script>
+<hr>
+<div class="text-center">
+  <%= link_to "単語帳一覧に戻る", word_books_path, class: "btn btn-secondary" %>
+</div>
+
+<script type="module">
+import * as bootstrap from "bootstrap"
+
 document.addEventListener("turbo:load", () => {
   const deleteModalEl = document.getElementById("deleteWordModal")
   if (!deleteModalEl) return
@@ -114,6 +138,3 @@ document.addEventListener("turbo:load", () => {
   })
 })
 </script>
-
-<hr>
-<%= link_to "単語帳一覧に戻る", word_books_path, class: "btn btn-secondary mt-3" %>

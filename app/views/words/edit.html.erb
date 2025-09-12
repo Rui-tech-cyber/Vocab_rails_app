@@ -3,7 +3,7 @@
 
   <div class="d-flex justify-content-center">
     <div style="width: 100%; max-width: 500px;">
-      <%= form_with model: @word, local: true do |f| %>
+      <%= form_with model: [@word_book, @word], local: true do |f| %>
         <div class="mb-3">
           <%= f.label :term, "英単語" %>
           <%= f.text_field :term, class: "form-control" %>
