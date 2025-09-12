@@ -8,6 +8,7 @@ class WordBooksController < ApplicationController
 
   def show
     @words = @word_book.words.order(created_at: :desc)
+    @word = @word_book.words.build
   end
 
   def new
