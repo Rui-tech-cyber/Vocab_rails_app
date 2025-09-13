@@ -105,3 +105,8 @@ Free Dictionary API などは使用せず、アプリ内で精度の高いCSVデ
 - belongs_to :user
 
 ---
+
+##  デモユーザ情報
+- ユーザー名：test
+- ユーザーアドレス：test@test.com
+- pass：123456
