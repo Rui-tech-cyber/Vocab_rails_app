@@ -109,6 +109,10 @@
 </div>
 
 <hr>
+<div class="text-center mb-4">
+  <%= link_to "この単語帳でテストをする", new_exam_path(word_book_id: @word_book.id), class: "btn btn-lg btn-primary" %>
+</div>
+
 <div class="text-center">
   <%= link_to "単語帳一覧に戻る", word_books_path, class: "btn btn-secondary" %>
 </div>
