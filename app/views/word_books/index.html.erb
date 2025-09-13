@@ -1,0 +1,76 @@
+<div class="container my-4">
+  <h1 class="mb-4 text-center">単語帳一覧</h1>
+
+  <div class="d-flex justify-content-center mb-4">
+    <%= link_to "新しい単語帳を作成", new_word_book_path, class: "btn btn-primary btn-lg rounded-pill shadow-sm" %>
+  </div>
+
+  <div class="row g-4">
+    <% @word_books.each do |wb| %>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="card-title">
+                <%= link_to wb.title, word_book_path(wb), class: "text-decoration-none" %>
+              </h5>
+              <p class="card-text text-muted">
+                作成日: <%= wb.created_at.strftime("%Y-%m-%d") %>
+              </p>
+            </div>
+            <%= button_to "削除", "#", 
+                  class: "btn btn-danger mt-2 delete-wordbook-btn rounded-pill",
+                  data: { title: wb.title, url: word_book_path(wb) } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <hr class="my-5">
+
+  <div class="text-center">
+    <%= link_to "トップページに戻る", root_path, class: "btn btn-outline-secondary rounded-pill shadow-sm" %>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteWordBookModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">単語帳を削除しますか？</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p id="deleteModalWordBookTitle"></p>
+        <%= button_to "削除する", "#", method: :delete, 
+              class: "btn btn-danger", id: "confirmDeleteWordBookBtn" %>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("turbo:load", () => {
+  const deleteModalEl = document.getElementById("deleteWordBookModal")
+  if (!deleteModalEl) return
+
+  const deleteModal = new bootstrap.Modal(deleteModalEl)
+  const modalTitle = document.getElementById("deleteModalWordBookTitle")
+  const confirmBtn = document.getElementById("confirmDeleteWordBookBtn")
+
+  document.querySelectorAll(".delete-wordbook-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault()
+      const wordBookTitle = btn.dataset.title
+      const deleteUrl = btn.dataset.url
+
+      modalTitle.textContent = `"${wordBookTitle}" を本当に削除しますか？`
+      confirmBtn.setAttribute("formaction", deleteUrl)
+
+      deleteModal.show()
+    })
+  })
+})
+</script>

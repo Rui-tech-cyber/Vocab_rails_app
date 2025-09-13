@@ -1,0 +1,99 @@
+<div class="container my-5">
+  <h1 class="text-center mb-4"><%= @exam.word_book.title %> のテスト</h1>
+
+  <ul class="nav nav-tabs justify-content-center mb-3" id="examTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active py-2 px-4" id="ja-en-tab" data-bs-toggle="tab" data-bs-target="#ja-en" type="button" role="tab">
+        英 → 日
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link py-2 px-4" id="en-ja-tab" data-bs-toggle="tab" data-bs-target="#en-ja" type="button" role="tab">
+        日 → 英
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="examTabContent">
+    <% [["ja-en", "en_to_jp", "単語の意味を入力してください", :term], 
+        ["en-ja", "jp_to_en", "英単語を入力してください", :meaning]].each do |tab_id, mode, placeholder, field| %>
+      <div class="tab-pane fade <%= "show active" if tab_id == "ja-en" %>" id="<%= tab_id %>" role="tabpanel">
+        <%= form_with url: exam_exam_answers_path(@exam), method: :post, id: "exam-form-#{tab_id}" do %>
+          <% @questions.each do |q| %>
+            <div class="mb-3 p-3 border rounded shadow-sm">
+              <p class="mb-2"><strong>問題:</strong> <%= q.word.send(field) %></p>
+              <%= label_tag "answers[#{q.id}]", placeholder, class: "form-label" %>
+              <%= text_field_tag "answers[#{q.id}]", nil, class: "form-control answer-input", data: { question_id: q.id } %>
+            </div>
+          <% end %>
+
+          <%= hidden_field_tag :mode, mode %>
+
+          <div class="d-flex justify-content-center mt-3">
+            <button type="button" class="btn btn-primary px-4 submit-btn" data-form-id="exam-form-<%= tab_id %>">
+              回答する
+            </button>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <hr class="my-4">
+
+  <div class="text-center">
+    <%= link_to "トップページに戻る", root_path, class: "btn btn-secondary rounded-pill shadow-sm" %>
+  </div>
+</div>
+
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">回答を送信する</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        本当に回答を送信しますか？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+        <button type="button" class="btn btn-primary" id="confirm-submit">送信する</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("turbo:load", () => {
+  const submitBtns = document.querySelectorAll(".submit-btn")
+  const confirmSubmitBtn = document.getElementById("confirm-submit")
+  let currentForm = null
+
+  submitBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const formId = btn.dataset.formId
+      const form = document.getElementById(formId)
+      if (!form) return
+
+      const inputs = form.querySelectorAll(".answer-input")
+      inputs.forEach(input => {
+        if (input.value.trim() === "") {
+          input.classList.add("is-invalid")
+        } else {
+          input.classList.remove("is-invalid")
+        }
+      })
+
+      currentForm = form
+      const modalEl = document.getElementById('confirmModal')
+      const modal = new bootstrap.Modal(modalEl)
+      modal.show()
+    })
+  })
+
+  confirmSubmitBtn.addEventListener("click", () => {
+    if (currentForm) currentForm.submit()
+  })
+})
+</script>

@@ -1,0 +1,27 @@
+<div class="container text-center mt-5">
+  <h1 class="mb-4 fw-bold">Vocab</h1>
+
+  <section class="my-5">
+    <h2 class="mb-3">ひとくちメモ</h2>
+    <p class="lead">毎日の積み重ねが大きな力になるよ！🚀</p>
+  </section>
+
+  <hr class="my-4">
+
+  <section class="d-flex flex-column align-items-center gap-4">
+    <%= link_to "作成した単語帳一覧", word_books_path, 
+      class: "btn btn-lg btn-outline-primary rounded-pill shadow-sm w-50 hover-scale" %>
+    <%= link_to "英単語を調べる", search_words_path, 
+      class: "btn btn-lg btn-primary rounded-pill shadow-sm w-50 hover-scale" %>
+  </section>
+</div>
+
+<style>
+  .hover-scale {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .hover-scale:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+  }
+</style>

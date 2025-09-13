@@ -1,0 +1,12 @@
+<h1>新しい単語帳作成</h1>
+
+<%= form_with model: @word_book, local: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :title, "単語帳タイトル" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <%= f.submit "更新", class: "btn btn-primary" %>
+<% end %>
+
+<hr>
+<%= link_to "一覧に戻る", word_books_path, class: "btn btn-secondary mt-3" %>

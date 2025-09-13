@@ -1,0 +1,42 @@
+ja:
+  errors:
+    messages:
+      not_saved: "保存に失敗しました: %{resource} にエラーがあります。"
+      blank: "を入力してください"
+      confirmation: "と%{attribute}の入力が一致しません"
+      too_short: "は%{count}文字以上で入力してください"
+  activerecord:
+    models:
+      user: "ユーザー"
+    attributes:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+        name: "ユーザー名"
+  devise:
+    confirmations:
+      confirmed: "メールアドレスが確認されました。"
+      send_instructions: "確認用のメールを送信しました。"
+      already_confirmed: "すでに確認済みです。"
+    failure:
+      invalid: "メールアドレスまたはパスワードが違います。"
+      not_found_in_database: "メールアドレスまたはパスワードが違います。"
+      timeout: "セッションがタイムアウトしました。もう一度ログインしてください。"
+      unauthenticated: "ログインしてください。"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      already_signed_out: "すでにログアウトしています。"
+    registrations:
+      updated: "アカウント情報を更新しました。"
+      destroyed: "アカウントを削除しました。"
+      new:
+        signed_up: "アカウントを作成しました。"
+    passwords:
+      send_instructions: "パスワード再設定用のメールを送信しました。"
+      updated: "パスワードを変更しました。"
+      updated_not_active: "パスワードは更新されましたが、アカウントはまだ有効化されていません。"
+      no_token: "パスワードリセット用のURLが無効です。"
+      new:
+        forgot_your_password: "パスワードをお忘れですか？"

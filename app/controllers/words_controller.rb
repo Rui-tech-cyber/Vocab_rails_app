@@ -1,0 +1,81 @@
+class WordsController < ApplicationController
+  before_action :authenticate_user!, except: [:search]
+  before_action :set_word_book_for_nested, only: [:new, :edit, :update, :destroy]
+  before_action :set_word, only: [:edit, :update, :destroy]
+
+  def new
+    @word = @word_book.words.new
+    @words = @word_book.words.order(created_at: :desc)
+  end
+
+  def create
+    word_book_id = params[:word][:word_book_id] || params[:word_book_id]
+    @word_book = current_user.word_books.find(word_book_id)
+    @word = @word_book.words.new(word_params.except(:word_book_id))
+
+    if @word.save
+      redirect_to word_book_path(@word_book), notice: "単語を追加しました。"
+    else
+      redirect_back fallback_location: word_books_path, alert: "単語の追加に失敗しました。"
+    end
+  end  
+
+  def edit; end
+
+  def update
+    if @word.update(word_params.except(:word_book_id))
+      redirect_to word_book_path(@word_book), notice: "単語を更新しました。"
+    else
+      flash.now[:alert] = "単語の更新に失敗しました。"
+      render :edit
+    end
+  end
+
+  def destroy
+    @word.destroy
+    redirect_to word_book_path(@word_book), notice: "単語を削除しました。"
+  end
+
+  def search
+    @results = []
+  
+    if params[:term].present?
+      term = params[:term].strip
+  
+      if term.match?(/[^a-zA-Z]/)
+        flash.now[:alert] = "検索は英単語のみ対応しています。"
+        return render :search
+      end
+  
+      @results = Word.where("term ILIKE ?", "%#{term}%").map do |w|
+        {
+          word: w.term,
+          meaning: w.meaning,
+          example: w.example.presence || "例文なし"
+        }
+      end
+  
+      flash.now[:alert] = "検索結果が見つかりませんでした。" if @results.empty?
+    end
+  
+    render :search
+  end
+
+
+  private
+
+  def set_word_book_for_nested
+    @word_book = current_user.word_books.find_by(id: params[:word_book_id])
+    unless @word_book
+      redirect_to word_books_path, alert: "この単語帳にはアクセスできません。"
+    end
+  end
+
+  def set_word
+    @word = @word_book.words.find(params[:id])
+  end
+
+  def word_params
+    params.require(:word).permit(:term, :meaning, :example, :word_book_id)
+  end
+end

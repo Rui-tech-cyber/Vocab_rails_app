@@ -1,0 +1,32 @@
+<div class="container my-5">
+  <h1 class="text-center mb-4"><%= @exam.word_book.title %> のテスト結果</h1>
+
+  <div class="alert alert-info p-4 text-center">
+    <p class="mb-2"><strong>正解数:</strong> <%= @correct_count %></p>
+    <p class="mb-0"><strong>不正解数:</strong> <%= @incorrect_count %></p>
+  </div>
+
+  <hr class="my-4">
+
+  <h3 class="mb-3">回答一覧</h3>
+  <% @answers.each do |answer| %>
+    <div class="mb-3 p-3 border rounded shadow-sm <%= answer.correct ? 'bg-light' : 'bg-warning bg-opacity-25' %>">
+      <p class="mb-1"><strong>問題:</strong> <%= answer.word.term %> の意味は？</p>
+      <p class="mb-1"><strong>あなたの回答:</strong> <%= answer.user_answer %></p>
+      <p class="mb-1"><strong>正解:</strong> <%= answer.word.meaning %></p>
+      <% if answer.correct %>
+        <span class="badge bg-success">正解</span>
+      <% else %>
+        <span class="badge bg-danger">不正解</span>
+      <% end %>
+    </div>
+  <% end %>
+
+  <hr class="my-4">
+
+  <div class="d-flex justify-content-center gap-3 flex-wrap">
+    <%= link_to "もう一度挑戦する", new_exam_path(word_book_id: @exam.word_book.id), class: "btn btn-primary rounded-pill shadow-sm px-4" %>
+    <%= link_to "単語帳に戻る", word_book_path(@exam.word_book), class: "btn btn-secondary rounded-pill shadow-sm px-4" %>
+    <%= link_to "トップページに戻る", root_path, class: "btn btn-outline-dark rounded-pill shadow-sm px-4" %>
+  </div>
+</div>

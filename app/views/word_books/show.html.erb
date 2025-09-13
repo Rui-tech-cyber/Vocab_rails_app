@@ -1,0 +1,144 @@
+<h1 class="mb-4 text-center">登録済み単語一覧</h1>
+
+<div class="row g-3">
+  <% @words.each do |word| %>
+    <div class="col-12 col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div>
+            <strong><%= word.term %></strong> : <%= word.meaning %>
+            <% if word.example.present? %>
+              <br><small>例文: <%= word.example %></small>
+            <% end %>
+          </div>
+          <div class="d-flex gap-2">
+            <%= link_to "編集", edit_word_book_word_path(@word_book, word), class: "btn btn-sm btn-warning" %>
+            <button type="button" class="btn btn-sm btn-danger delete-word-btn" data-term="<%= word.term %>" data-url="<%= word_book_word_path(@word_book, word) %>">削除</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="modal fade" id="deleteWordModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">単語を削除しますか？</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p id="deleteModalWordTitle"></p>
+        <div class="d-flex justify-content-center gap-2">
+          <%= button_to "削除する", "#", method: :delete, class: "btn btn-danger", id: "confirmDeleteWordBtn" %>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+<h4 class="mb-3 text-center"><%= @word_book.title %> に単語を追加</h4>
+
+<ul class="nav nav-tabs justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" data-bs-toggle="tab" href="#manual">手動で追加</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-bs-toggle="tab" href="#search">検索で追加</a>
+  </li>
+</ul>
+
+<div class="tab-content mt-4">
+  <div class="tab-pane fade show active" id="manual">
+    <div class="d-flex justify-content-center">
+      <div style="max-width: 700px; width: 100%;">
+        <%= form_with model: [@word_book, @word], local: true do |f| %>
+          <div class="mb-3">
+            <%= f.label :term, "英単語", class: "form-label fw-bold" %>
+            <%= f.text_field :term, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= f.label :meaning, "意味", class: "form-label fw-bold" %>
+            <%= f.text_field :meaning, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= f.label :example, "例文（任意）", class: "form-label fw-bold" %>
+            <%= f.text_area :example, class: "form-control", rows: 2 %>
+          </div>
+          <div class="text-center">
+            <%= f.submit "追加", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="search">
+    <div class="d-flex justify-content-center">
+      <div style="max-width: 300px; width: 100%;">
+        <%= form_with url: search_words_path, method: :get, local: true do |f| %>
+          <div class="mb-3">
+            <%= f.label :term, "英単語を検索", class: "form-label fw-bold" %>
+            <%= f.text_field :term, class: "form-control" %>
+          </div>
+          <div class="text-center">
+            <%= f.submit "検索", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <% if @results.present? %>
+      <ul class="mt-3 list-unstyled text-center">
+        <% @results.each do |res| %>
+          <li class="mb-3">
+            <strong><%= res[:word] %></strong> : <%= res[:meaning] %>
+            <br>
+            <small class="text-muted">例文: <%= res[:example] %></small>
+            <div class="mt-2">
+              <%= button_to "追加", word_book_words_path(@word_book, word: { term: res[:word], meaning: res[:meaning], example: res[:example] }), method: :post, class: "btn btn-sm btn-success" %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
+
+<hr>
+<div class="text-center mb-4">
+  <%= link_to "この単語帳でテストをする", new_exam_path(word_book_id: @word_book.id), class: "btn btn-lg btn-primary" %>
+</div>
+
+<div class="text-center">
+  <%= link_to "単語帳一覧に戻る", word_books_path, class: "btn btn-secondary" %>
+</div>
+
+<script type="module">
+import * as bootstrap from "bootstrap"
+
+document.addEventListener("turbo:load", () => {
+  const deleteModalEl = document.getElementById("deleteWordModal")
+  if (!deleteModalEl) return
+
+  const deleteModal = new bootstrap.Modal(deleteModalEl)
+  const modalTitle = document.getElementById("deleteModalWordTitle")
+  const confirmBtn = document.getElementById("confirmDeleteWordBtn")
+
+  document.querySelectorAll(".delete-word-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault()
+      const wordTerm = btn.dataset.term
+      const deleteUrl = btn.dataset.url
+
+      modalTitle.textContent = `"${wordTerm}" を本当に削除しますか？`
+      confirmBtn.setAttribute("formaction", deleteUrl)
+
+      deleteModal.show()
+    })
+  })
+})
+</script>

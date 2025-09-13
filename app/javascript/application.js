@@ -1,3 +1,10 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
-import "controllers"
+import "./controllers"
+import "save_word_modal" 
+import "bootstrap"
+
+console.log("✅ application.js loaded")
+
+document.addEventListener("turbo:load", () => {
+  console.log("✅ turbo:load fired")
+})
