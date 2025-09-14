@@ -42,6 +42,7 @@ Free Dictionary API などは使用せず、アプリ内で精度の高いCSVデ
 
 ---
 ##アプリurl
+
 https://vocab-app-de1c3ab929a8.herokuapp.com/
 
 ---
