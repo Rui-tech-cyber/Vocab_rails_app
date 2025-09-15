@@ -41,7 +41,7 @@ Free Dictionary API などは使用せず、アプリ内で精度の高いCSVデ
 <img width="1440" height="700" alt="スクリーンショット 2025-09-13 12 14 53" src="https://github.com/user-attachments/assets/ae914756-e663-4d59-9966-ddafd05e6b7c" />
 
 ---
-##アプリurl
+##  アプリURL
 
 https://vocab-app-de1c3ab929a8.herokuapp.com/
 
